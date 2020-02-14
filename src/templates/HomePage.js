@@ -6,9 +6,10 @@ import Content from '../components/Content';
 import Layout from '../components/Layout';
 import BackgroundVideo from '../components/BackgroundVideo';
 import PageVideoHeader from '../components/PageVideoHeader';
+import ValoresAgregadosSection from '../components/valoresAgregados/ValoresAgregadosSection';
 
 // Export Template for use in CMS preview
-export const HomePageTemplate = ({ title, subtitle, featuredVideo, body }) => (
+export const HomePageTemplate = ({ title, subtitle, featuredVideo, valoresAgregados, body }) => (
 	<main className="Home">
 		{/* <PageHeader
       large
@@ -17,6 +18,13 @@ export const HomePageTemplate = ({ title, subtitle, featuredVideo, body }) => (
       backgroundImage={featuredImage}
     /> */}
 		<PageVideoHeader backgroundVideo={featuredVideo} videoType="video/mp4" title={title} subtitle={subtitle} />
+		{!!valoresAgregados.length && (
+			<section className="section">
+				<div className="container">
+					<ValoresAgregadosSection valoresAgregados={valoresAgregados} />
+				</div>
+			</section>
+		)}
 		<section className="section">
 			<div className="container">
 				<Content source={body} />
@@ -47,6 +55,7 @@ export const pageQuery = graphql`
 				title
 				subtitle
 				featuredVideo
+				valoresAgregados
 			}
 		}
 	}
