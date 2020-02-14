@@ -4,6 +4,13 @@ slug: ''
 title: Atrévete a estar siempre un paso adelante
 featuredVideo: /videos/ecudevs_interview.mp4
 subtitle: 'Potencia tus conocimientos, te ayudamos a lograr todos tus objetivos.'
+valorAgregados:
+  - description: Vamos a desarrollar un proyecto al final del curso
+    icon: lnr lnr-graduation-hat
+    title: Aprende practicando
+accordion:
+  - content: Lol
+    title: Contenido
 meta:
   description: This is a meta description.
   title: The Ultimate Gatsby Starter
