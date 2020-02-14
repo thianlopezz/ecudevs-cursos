@@ -208,6 +208,14 @@ collections: # A list of collections the CMS should be able to edit
           - { label: Title, name: title, widget: string }
           - { label: Featured Video, name: featuredVideo, widget: string }
           - { label: Subtitle, name: subtitle, widget: markdown }
+          - label: 'valorAgregados'
+            name: 'valorAgregados'
+            widget: 'list'
+            required: false
+            fields:
+              - { label: 'Icon', name: 'icon', widget: string }
+              - { label: 'Title', name: 'title', widget: string }
+              - { label: 'Description', name: 'description', widget: text }
           - { label: Body, name: body, widget: markdown }
           - label: 'Accordion'
             name: 'accordion'
