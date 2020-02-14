@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 
 import './ValorAgregadoCard.css';
 
-const ValorAgregadoCard = ({ icon, title, description, className = '', ...props }) => (
+const ValorAgregadoCard = ({ icon, title, description, slug, className = '', ...props }) => (
 	<Link to={slug} className={`ValorAgregadoCard ${className}`}>
 		<div className="ValorAgregadoCard--Content">
 			{icon && (
