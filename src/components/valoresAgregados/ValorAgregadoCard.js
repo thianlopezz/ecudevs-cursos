@@ -7,8 +7,8 @@ const ValorAgregadoCard = ({ icon, title, description, slug, className = '', ...
 	<Link to={slug} className={`ValorAgregadoCard ${className}`}>
 		<div className="ValorAgregadoCard--Content">
 			{icon && (
-				<h1>
-					<span>{icon}</span>
+				<h1 style={{ fontSize: '5rem', marginBottom: 0 }}>
+					<span className={icon} />
 				</h1>
 			)}
 			{title && <h3 className="ValorAgregadoCard--Title">{title}</h3>}

@@ -4,12 +4,12 @@ import { graphql } from 'gatsby';
 import PageHeader from '../components/PageHeader';
 import Content from '../components/Content';
 import Layout from '../components/Layout';
-import BackgroundVideo from '../components/BackgroundVideo';
+
 import PageVideoHeader from '../components/PageVideoHeader';
 import ValoresAgregadosSection from '../components/valoresAgregados/ValoresAgregadosSection';
 
 // Export Template for use in CMS preview
-export const HomePageTemplate = ({ title, subtitle, featuredVideo, valoresAgregados, body }) => (
+export const HomePageTemplate = ({ title, subtitle, featuredVideo, discover, valoresAgregados = [], body }) => (
 	<main className="Home">
 		{/* <PageHeader
       large
@@ -25,6 +25,11 @@ export const HomePageTemplate = ({ title, subtitle, featuredVideo, valoresAgrega
 				</div>
 			</section>
 		)}
+		<section className="section">
+			<div className="container">
+				<h1 className="taCenter">{discover}</h1>
+			</div>
+		</section>
 		<section className="section">
 			<div className="container">
 				<Content source={body} />
@@ -55,7 +60,11 @@ export const pageQuery = graphql`
 				title
 				subtitle
 				featuredVideo
-				valoresAgregados
+				valoresAgregados {
+					icon
+					title
+					description
+				}
 			}
 		}
 	}
