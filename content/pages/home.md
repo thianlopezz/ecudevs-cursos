@@ -14,9 +14,8 @@ valoresAgregados:
   - description: Lorem ipsum set
     icon: lnr lnr-graduation-hat
     title: Lorem ipsum set
-accordion:
-  - content: Lol
-    title: Contenido
+discover: ¿Qué quieres aprender?
+tutores: []
 meta:
   description: This is a meta description.
   title: The Ultimate Gatsby Starter
