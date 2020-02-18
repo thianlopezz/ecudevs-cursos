@@ -215,7 +215,7 @@ collections: # A list of collections the CMS should be able to edit
             fields:
               - { label: 'Icon', name: 'icon', widget: string }
               - { label: 'Title', name: 'title', widget: string }
-              - { label: 'Description', name: 'description', widget: text }              
+              - { label: 'Description', name: 'description', widget: text }
           - { label: Discover, name: discover, widget: string }
           - { label: Body, name: body, widget: markdown }
           - label: 'tutores'
@@ -225,7 +225,14 @@ collections: # A list of collections the CMS should be able to edit
             fields:
               - { label: 'Foto', name: 'foto', widget: image }
               - { label: 'Nombre', name: 'nombre', widget: string }
-              - { label: 'Description', name: 'description', widget: text }    
+              - { label: 'Descripicion', name: 'descripicion', widget: text }
+          - label: 'Comentarios'
+            name: 'comentarios'
+            widget: 'list'
+            required: false
+            fields:
+              - { label: 'Título', name: 'titulo', widget: string }
+              - { label: 'Comentario', name: 'comentario', widget: text }
           - label: 'Meta'
             required: false
             name: 'meta'
