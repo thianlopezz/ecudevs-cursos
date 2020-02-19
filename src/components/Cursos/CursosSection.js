@@ -37,13 +37,18 @@ class CursosSection extends React.Component {
             ))}
           </div>
         )}
-        {showLoadMore && visibleCursos.length < cursos.length && (
+        {/* {showLoadMore && visibleCursos.length < cursos.length && (
           <div className="taCenter">
             <button className="button" onClick={this.increaseLimit}>
               {loadMoreTitle}
             </button>
           </div>
-        )}
+        )} */}
+        <div className="taCenter">
+          <button className="button" onClick={this.increaseLimit}>
+            Ver todos
+          </button>
+        </div>
       </div>
     )
   }

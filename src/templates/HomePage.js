@@ -98,7 +98,7 @@ export const HomePageTemplate = ({
               setCursosFiltered(filterCursos(cursos, name))
             }}
           />
-          <CursosSection cursos={cursosFiltered} />
+          <CursosSection cursos={cursosFiltered} showLoadMore />
         </div>
       </section>
       <section className="section">
