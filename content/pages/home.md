@@ -15,7 +15,10 @@ valoresAgregados:
     icon: lnr lnr-graduation-hat
     title: Lorem ipsum set
 discover: ¿Qué quieres aprender?
-tutores: []
+tutores:
+  - descripicion: adasdadas
+    foto: urlfoto
+    nombre: Thian Lopez
 comentarios:
   - comentario: lorem ipsunm asdadas
     titulo: '"Comentario 1"'
