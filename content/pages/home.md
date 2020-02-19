@@ -49,8 +49,10 @@ comentarios:
       - Christian, estudiante de React
     titulo: '"Muchas gracias"'
 meta:
-  description: This is a meta description.
-  title: The Ultimate Gatsby Starter
+  description: >-
+    Aprende la mejor tecnología con nosotros, te ayudamos en materializar la
+    idea que está dando vueltas en tu cabeza.
+  title: Home | Ecudevs
 ---
 Yellowcake is an opinionated starter project created by [Thrive Digital](https://thriveweb.com.au/) a [Gold Coast Web Design](https://thriveweb.com.au/) studio. to help you create lightening fast websites with [Gatsby](https://gatsbyjs.org) and [Netlify CMS](https://netlifycms.org).
 
