@@ -16,6 +16,9 @@ valoresAgregados:
     title: Lorem ipsum set
 discover: ¿Qué quieres aprender?
 tutores: []
+comentarios:
+  - comentario: lorem ipsunm asdadas
+    titulo: '"Comentario 1"'
 meta:
   description: This is a meta description.
   title: The Ultimate Gatsby Starter
