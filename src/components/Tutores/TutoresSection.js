@@ -1,7 +1,7 @@
 import React from 'react'
+import TutorCard from './TutorCard'
 
 import './TutoresSection.css'
-import TutorCard from './TutorCard'
 
 class TutoresSection extends React.Component {
   static defaultProps = {

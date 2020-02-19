@@ -62,6 +62,8 @@ export const HomePageTemplate = ({
     fetchData()
   }, [])
 
+  debugger
+
   return (
     <main className="Home">
       {/* <PageHeader

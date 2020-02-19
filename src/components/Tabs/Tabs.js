@@ -8,6 +8,7 @@ export default function Tabs({ activeTab, tabs = [], onTabChange }) {
         <div className="Tabs--Links">
           {tabs.map(tab => (
             <div
+              key={tab.name || tab.title}
               onClick={() => onTabChange(tab.name || tab.title)}
               className={`TabsLink ${activeTab == tab.name ? 'active' : ''}`}
               href="javascript:;"

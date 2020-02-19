@@ -226,6 +226,8 @@ collections: # A list of collections the CMS should be able to edit
               - { label: 'Nombre', name: 'nombre', widget: string }
               - { label: 'Foto', name: 'foto', widget: string }
               - { label: 'Descripicion', name: 'descripcion', widget: text }
+          - { label: QueDicen, name: dicen, widget: string }
+          - { label: QueDicenDescripcion, name: queDicenDescripcion, widget: markdown }
           - label: 'Comentarios'
             name: 'comentarios'
             widget: 'list'
