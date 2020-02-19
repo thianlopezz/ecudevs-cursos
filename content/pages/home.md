@@ -31,6 +31,11 @@ tutores:
     foto: >-
       https://firebasestorage.googleapis.com/v0/b/ecudevs-dc803.appspot.com/o/foto-temas%2Fportada_js.png?alt=media&token=494eac15-f9a1-4e4f-80d4-568793f5a027
     nombre: Ricardo Garcia
+dicen: ¿Qué dicen los estudiantes acerca de nuestros cursos?
+queDicenDescripcion: >-
+  El 2019 fue un gran año, y nos dejó muchas experiencias buenas, te dejamos
+  algunos comentarios que nuestros estudiantes nos dejaron a través de las
+  **encuestas de satisfación** que realizamos para medir nuestro rendimiento.
 comentarios:
   - comentario: >-
       Buenas tardes fueron muy buenas sus clases me sirvió bastante para mi
