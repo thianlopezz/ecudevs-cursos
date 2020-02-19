@@ -11,6 +11,7 @@ import ValoresAgregadosSection from '../components/valoresAgregados/ValoresAgreg
 import CursosSection from '../components/Cursos/CursosSection'
 import Tabs from '../components/Tabs/Tabs'
 import TutoresSection from '../components/Tutores/TutoresSection'
+import ComentariosSection from '../components/Comentarios/ComentariosSection'
 
 const filterCursos = (cursos = [], idCategoria) => {
   let retorno = cursos.filter(curso =>
@@ -27,6 +28,9 @@ export const HomePageTemplate = ({
   discover,
   valoresAgregados = [],
   tutores,
+  dicen,
+  queDicenDescripcion,
+  comentarios,
   body
 }) => {
   const [cursos, setCursos] = useState([])
@@ -61,8 +65,6 @@ export const HomePageTemplate = ({
 
     fetchData()
   }, [])
-
-  debugger
 
   return (
     <main className="Home">
@@ -105,6 +107,15 @@ export const HomePageTemplate = ({
           <TutoresSection tutores={tutores} />
         </div>
       </section>
+      <section className="section thick">
+        <div className="container">
+          <h1 className="taCenter">{dicen}</h1>
+          <ComentariosSection
+            queDicenDescripcion={queDicenDescripcion}
+            comentarios={comentarios}
+          />
+        </div>
+      </section>
       <section className="section">
         <div className="container">
           <Content source={body} />
@@ -136,6 +147,7 @@ export const pageQuery = graphql`
         title
         subtitle
         featuredVideo
+        discover
         valoresAgregados {
           icon
           title
@@ -145,6 +157,12 @@ export const pageQuery = graphql`
           foto
           nombre
           descripcion
+        }
+        dicen
+        queDicenDescripcion
+        comentarios {
+          titulo
+          comentario
         }
       }
     }

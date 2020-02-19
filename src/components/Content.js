@@ -67,14 +67,16 @@ const HtmlBlock = ({ value }) => {
   )
 }
 
-const Content = ({ source, src, className = '' }) => {
+const Content = ({ source, src, className = '', style = {} }) => {
   // accepts either html or markdown
+  debugger
   source = source || src || ''
   if (source.match(/^</)) {
     source = withContentImages(source)
 
     return (
       <div
+        style={style}
         className={`Content ${className}`}
         dangerouslySetInnerHTML={{ __html: source }}
       />

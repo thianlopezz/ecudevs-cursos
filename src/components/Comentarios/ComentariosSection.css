@@ -1,0 +1,66 @@
+.ComentariosSection {
+}
+
+.ComentariosSection--Grid {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: stretch;
+}
+
+.ComentariosSection button {
+	margin-top: 1rem;
+	margin-top: 5rem;
+	background: white;
+	border: 2px solid black;
+	padding: 1rem 2rem;
+	cursor: pointer;
+}
+
+.ComentariosSection button:hover {
+	background: black;
+	border: 2px solid white;
+	color: white;
+}
+
+.ComentariosSection--Grid > * {
+	width: calc(33.33% - 2rem);
+	margin-bottom: 4rem;
+}
+
+@supports (display: grid) {
+	.ComentariosSection--Grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-gap: 4rem;
+	}
+
+	.ComentariosSection--Grid > * {
+		width: auto;
+		margin: 0;
+	}
+}
+
+.ComentariosSection--Title {
+	width: 100%;
+	max-width: 200px;
+	margin: 0 auto 4rem auto;
+	line-height: 1.2;
+}
+
+@media screen and (max-width: 888px) {
+	.ComentariosSection--Grid > * {
+		width: 100%;
+		max-width: 50rem;
+		margin: 0 auto 4rem;
+		display: block;
+	}
+
+	@supports (display: grid) {
+		.ComentariosSection--Grid {
+			display: block;
+			grid-template-columns: 1;
+			grid-gap: 0;
+		}
+	}
+}
