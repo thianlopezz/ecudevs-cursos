@@ -117,7 +117,7 @@ export const HomePageTemplate = ({
         </div>
       </section>
       <section className="section">
-        <div className="container">
+        <div className="container taCenter">
           <Content source={body} />
         </div>
       </section>
