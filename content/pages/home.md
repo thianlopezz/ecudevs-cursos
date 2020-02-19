@@ -38,20 +38,23 @@ queDicenDescripcion: >-
   **encuestas de satisfación** que realizamos para medir nuestro rendimiento.
 comentarios:
   - comentario: >-
-      Buenas tardes fueron muy buenas sus clases me sirvió bastante para mi
+      > Buenas tardes fueron muy buenas sus clases me sirvió bastante para mi
       empresa ya tengo levantada la web hasta que terminemos.
 
-      - Xavier, estudiante de JavaScript e Ionic Framework
+
+      \- **Xavier**, estudiante de JavaScript e Ionic Framework
     titulo: '"Sirvió bastante para mi empresa"'
   - comentario: >-
-      Estoy pensando en hacer un proyecto con todas estas tecnologías y su curso
-      sin duda será una piedra angular para sacarlo adelante.
+      > Estoy pensando en hacer un proyecto con todas estas tecnologías y su
+      curso sin duda será una piedra angular para sacarlo adelante.
 
-      - Juan, estudiante de Ionic Framework
+
+      \- **Juan**, estudiante de Ionic Framework
     titulo: '"Un proyecto con todas las tecnologías"'
   - comentario: |-
-      Excelente profesional, muchas gracias por compartir tu experiencia.
-      - Christian, estudiante de React
+      > Excelente profesional, muchas gracias por compartir tu experiencia.
+
+      \- **Christian**, estudiante de React
     titulo: '"Muchas gracias"'
 meta:
   description: >-
@@ -59,23 +62,4 @@ meta:
     idea que está dando vueltas en tu cabeza.
   title: Home | Ecudevs
 ---
-Yellowcake is an opinionated starter project created by [Thrive Digital](https://thriveweb.com.au/) a [Gold Coast Web Design](https://thriveweb.com.au/) studio. to help you create lightening fast websites with [Gatsby](https://gatsbyjs.org) and [Netlify CMS](https://netlifycms.org).
-
-View the [project overview](https://thriveweb.com.au/the-lab/yellowcake-gatsby-react-js-starter-project/) and the [docs](https://github.com/thriveweb/yellowcake/blob/master/README.md).
-
-# Features
-
-* **[Gatsby](https://gatsbyjs.org)** static site generator
-* **[Netlify CMS](https://github.com/netlify/netlify-cms)** for content management
-* Dynamic menus and forms
-* **[Mailchimp](http://mailchimp.com)** and **[Uploadcare](https://uploadcare.com)** integrations
-* Fully responsive layout for mobile and widescreen browsing
-* Blog searching and paging functionality
-* Seamless image and content sliders
-* Instagram feed integration
-
-## Get started
-
-View the [Netlify CMS Docs](https://www.netlifycms.org/docs/) and the [Netlify CMS Repo](https://github.com/netlify/netlify-cms).
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/thriveweb/yellowcake&stack=cms)
+# ¿Y tu qué esperas?
