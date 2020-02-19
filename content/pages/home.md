@@ -29,7 +29,7 @@ tutores:
     nombre: Thian Lopez
   - descripcion: adsadadasdas
     foto: >-
-      https://firebasestorage.googleapis.com/v0/b/ecudevs-dc803.appspot.com/o/foto-temas%2Fportada_js.png?alt=media&token=494eac15-f9a1-4e4f-80d4-568793f5a027
+      https://firebasestorage.googleapis.com/v0/b/ecudevs-dc803.appspot.com/o/foto-temas%2Ftutor_ricardo.png?alt=media&token=fa70589c-fd53-47e8-839b-045f50dbb171
     nombre: Ricardo Garcia
 dicen: ¿Qué dicen los estudiantes acerca de nuestros cursos?
 queDicenDescripcion: >-
