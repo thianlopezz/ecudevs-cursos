@@ -20,6 +20,14 @@ tutores:
     foto: >-
       https://firebasestorage.googleapis.com/v0/b/ecudevs-dc803.appspot.com/o/foto-temas%2Fportada_js.png?alt=media&token=494eac15-f9a1-4e4f-80d4-568793f5a027
     nombre: Thian Lopez
+  - descripcion: adsadadasdas
+    foto: >-
+      https://firebasestorage.googleapis.com/v0/b/ecudevs-dc803.appspot.com/o/foto-temas%2Fportada_js.png?alt=media&token=494eac15-f9a1-4e4f-80d4-568793f5a027
+    nombre: Ricardo Garcia
+  - descripcion: emamsdasa
+    foto: >-
+      https://firebasestorage.googleapis.com/v0/b/ecudevs-dc803.appspot.com/o/foto-temas%2Fportada_js.png?alt=media&token=494eac15-f9a1-4e4f-80d4-568793f5a027
+    nombre: Fulanito
 comentarios:
   - comentario: lorem ipsunm asdadas
     titulo: '"Comentario 1"'
