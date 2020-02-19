@@ -223,9 +223,9 @@ collections: # A list of collections the CMS should be able to edit
             widget: 'list'
             required: false
             fields:
-              - { label: 'Foto', name: 'foto', widget: string }
               - { label: 'Nombre', name: 'nombre', widget: string }
-              - { label: 'Descripicion', name: 'descripicion', widget: text }
+              - { label: 'Foto', name: 'foto', widget: string }
+              - { label: 'Descripicion', name: 'descripcion', widget: text }
           - label: 'Comentarios'
             name: 'comentarios'
             widget: 'list'
