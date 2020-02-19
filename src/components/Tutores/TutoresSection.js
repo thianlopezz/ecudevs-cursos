@@ -30,13 +30,12 @@ class TutoresSection extends React.Component {
     return (
       <div className="TutoresSection">
         {title && <h2 className="TutoresSection--Title">{title}</h2>}
-        {!!visibleTutores.length && (
-          <div className="TutoresSection--Grid">
-            {visibleTutores.map((tutor, index) => (
+        <div className="Gallery">
+          {!!visibleTutores.length &&
+            visibleTutores.map((tutor, index) => (
               <TutorCard key={tutor.nombre + index} {...tutor} />
             ))}
-          </div>
-        )}
+        </div>
         {showLoadMore && visibleTutores.length < tutores.length && (
           <div className="taCenter">
             <button className="button" onClick={this.increaseLimit}>
