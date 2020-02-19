@@ -16,7 +16,7 @@ valoresAgregados:
     title: Lorem ipsum set
 discover: ¿Qué quieres aprender?
 tutores:
-  - descripicion: adasdadas
+  - descripcion: hello brooo
     foto: urlfoto
     nombre: Thian Lopez
 comentarios:
