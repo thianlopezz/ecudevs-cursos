@@ -26,6 +26,7 @@ export const HomePageTemplate = ({
   featuredVideo,
   discover,
   valoresAgregados = [],
+  tutores,
   body
 }) => {
   const [cursos, setCursos] = useState([])
