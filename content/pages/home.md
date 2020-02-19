@@ -38,20 +38,23 @@ queDicenDescripcion: >-
   **encuestas de satisfación** que realizamos para medir nuestro rendimiento.
 comentarios:
   - comentario: >-
-      Buenas tardes fueron muy buenas sus clases me sirvió bastante para mi
+      > Buenas tardes fueron muy buenas sus clases me sirvió bastante para mi
       empresa ya tengo levantada la web hasta que terminemos.
 
-      - Xavier, estudiante de JavaScript e Ionic Framework
+
+      \- **Xavier**, estudiante de JavaScript e Ionic Framework
     titulo: '"Sirvió bastante para mi empresa"'
   - comentario: >-
-      Estoy pensando en hacer un proyecto con todas estas tecnologías y su curso
-      sin duda será una piedra angular para sacarlo adelante.
+      > Estoy pensando en hacer un proyecto con todas estas tecnologías y su
+      curso sin duda será una piedra angular para sacarlo adelante.
 
-      - Juan, estudiante de Ionic Framework
+
+      \- **Juan**, estudiante de Ionic Framework
     titulo: '"Un proyecto con todas las tecnologías"'
   - comentario: |-
-      Excelente profesional, muchas gracias por compartir tu experiencia.
-      - Christian, estudiante de React
+      > Excelente profesional, muchas gracias por compartir tu experiencia.
+
+      \- **Christian**, estudiante de React
     titulo: '"Muchas gracias"'
 meta:
   description: >-
