@@ -1,2 +1,3 @@
 ---
 template: CursosPage
+slug: cursos
