@@ -20,22 +20,12 @@ const filterCursos = (cursos = [], idCategoria) => {
 }
 
 // Export Template for use in CMS preview
-export const CursosPageTemplate = ({
-  title,
-  subtitle,
-  featuredVideo,
-  discover,
-  valoresAgregados = [],
-  tutores,
-  dicen,
-  queDicenDescripcion,
-  comentarios,
-  body
-}) => {
+export const CursosPageTemplate = ({ title, discover, body }) => {
   const [cursos, setCursos] = useState([])
-  const [cursosFiltered, setCursosFiltered] = useState([])
+  const [cursosFilteredByCategory, setCursosFilteredByCategory] = useState([])
   const [tabs, setTabs] = useState([])
   const [activeTab, setActiveTab] = useState([])
+  const [busqueda, setBusqueda] = useState('')
 
   useEffect(() => {
     async function fetchData() {
@@ -58,12 +48,26 @@ export const CursosPageTemplate = ({
       if (categorias.length > 0) {
         setActiveTab(categorias[0].idCategoria)
         setCursos(cursos)
-        setCursosFiltered(filterCursos(cursos, categorias[0].idCategoria))
+        setCursosFilteredByCategory(
+          filterCursos(cursos, categorias[0].idCategoria)
+        )
       }
     }
 
     fetchData()
   }, [])
+
+  const filterFunction = curso => {
+    return (
+      curso.curso.toLowerCase().indexOf(busqueda.toLocaleLowerCase()) != -1 ||
+      curso.categorias.find(
+        categoria =>
+          categoria.categoria
+            .toLowerCase()
+            .indexOf(busqueda.toLocaleLowerCase()) != -1
+      )
+    )
+  }
 
   return (
     <main className="Home">
@@ -73,46 +77,48 @@ export const CursosPageTemplate = ({
       subtitle={subtitle}
       backgroundImage={featuredImage}
     /> */}
-      <PageVideoHeader
-        backgroundVideo={featuredVideo}
-        videoType="video/mp4"
-        title={title}
-        subtitle={subtitle}
-      />
-      {!!valoresAgregados.length && (
-        <section className="section">
-          <div className="container">
-            <ValoresAgregadosSection valoresAgregados={valoresAgregados} />
+      <section className="section">
+        <div className="container">
+          <h1 className="taCenter">Todos los cursos</h1>
+          <div className="Form--Group">
+            <label
+              className="Form--Label"
+              style={{ width: '100%', marginBottom: '1rem' }}
+            >
+              <input
+                className="Form--Input Form--InputText"
+                type="text"
+                placeholder="Curso"
+                name="curso"
+                value={busqueda}
+                onChange={e => setBusqueda(e.target.value)}
+              />
+              <span>Buscar un curso</span>
+            </label>
           </div>
-        </section>
-      )}
-      <section className="section">
-        <div className="container">
-          <h1 className="taCenter">{discover}</h1>
-          <Tabs
-            activeTab={activeTab}
-            tabs={tabs}
-            onTabChange={name => {
-              setActiveTab(name)
-              setCursosFiltered(filterCursos(cursos, name))
-            }}
-          />
-          <CursosSection cursos={cursosFiltered} showLoadMore />
-        </div>
-      </section>
-      <section className="section">
-        <div className="container">
-          <h1 className="taCenter">Tutores</h1>
-          <TutoresSection tutores={tutores} />
-        </div>
-      </section>
-      <section className="section thick">
-        <div className="container">
-          <h1 className="taCenter">{dicen}</h1>
-          <ComentariosSection
-            queDicenDescripcion={queDicenDescripcion}
-            comentarios={comentarios}
-          />
+          {busqueda.length == 0 ? (
+            <>
+              <Tabs
+                activeTab={activeTab}
+                tabs={tabs}
+                onTabChange={name => {
+                  setActiveTab(name)
+                  setCursosFilteredByCategory(filterCursos(cursos, name))
+                }}
+              />
+              <CursosSection
+                cursos={cursosFilteredByCategory}
+                showLoadMore={false}
+              />
+            </>
+          ) : cursos.filter(filterFunction).length > 0 ? (
+            <CursosSection
+              cursos={cursos.filter(filterFunction)}
+              showLoadMore={false}
+            />
+          ) : (
+            <p>No hay cursos para mostrar</p>
+          )}
         </div>
       </section>
       <section className="section">
@@ -127,7 +133,6 @@ export const CursosPageTemplate = ({
 // Export Default HomePage for front-end
 const CursosPage = ({ data: { page } }) => (
   <Layout meta={page.frontmatter.meta || false}>
-    <h1>Vamoooo!</h1>
     <CursosPageTemplate {...page} {...page.frontmatter} body={page.html} />
   </Layout>
 )
@@ -146,24 +151,6 @@ export const pageQuery = graphql`
       frontmatter {
         title
         subtitle
-        featuredVideo
-        discover
-        valoresAgregados {
-          icon
-          title
-          description
-        }
-        tutores {
-          foto
-          nombre
-          descripcion
-        }
-        dicen
-        queDicenDescripcion
-        comentarios {
-          titulo
-          comentario
-        }
       }
     }
   }

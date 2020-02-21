@@ -23,7 +23,13 @@ class CursosSection extends React.Component {
     }))
 
   render() {
-    const { cursos, title, showLoadMore, loadMoreTitle } = this.props,
+    const {
+        cursos,
+        title,
+        showLoadMore,
+        loadMoreTitle,
+        onLoadMore
+      } = this.props,
       { limit } = this.state,
       visibleCursos = cursos.slice(0, limit || cursos.length)
 
@@ -44,11 +50,13 @@ class CursosSection extends React.Component {
             </button>
           </div>
         )} */}
-        <div className="taCenter">
-          <button className="button" onClick={this.increaseLimit}>
-            Ver todos
-          </button>
-        </div>
+        {onLoadMore && (
+          <div className="taCenter">
+            <button className="button" onClick={onLoadMore}>
+              Ver todos
+            </button>
+          </div>
+        )}
       </div>
     )
   }

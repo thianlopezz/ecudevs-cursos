@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import Axios from 'axios'
 
-import PageHeader from '../components/PageHeader'
 import Content from '../components/Content'
 import Layout from '../components/Layout'
 
@@ -98,7 +97,10 @@ export const HomePageTemplate = ({
               setCursosFiltered(filterCursos(cursos, name))
             }}
           />
-          <CursosSection cursos={cursosFiltered} showLoadMore />
+          <CursosSection
+            cursos={cursosFiltered}
+            onLoadMore={() => navigate('cursos')}
+          />
         </div>
       </section>
       <section className="section">
