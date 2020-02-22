@@ -9,6 +9,7 @@ import { DefaultPageTemplate } from '../templates/DefaultPage'
 import { BlogIndexTemplate } from '../templates/BlogIndex'
 import { SinglePostTemplate } from '../templates/SinglePost'
 import { CursosPageTemplate } from '../templates/CursosPage'
+import { CursoDetallePageTemplate } from '../templates/CursoDetallePage'
 
 if (
   window.location.hostname === 'localhost' &&
@@ -26,6 +27,9 @@ CMS.registerPreviewTemplate('home-page', ({ entry }) => (
 ))
 CMS.registerPreviewTemplate('cursos-page', ({ entry }) => (
   <CursosPageTemplate {...entry.toJS().data} />
+))
+CMS.registerPreviewTemplate('curso-detalle-page', ({ entry }) => (
+  <CursoDetallePageTemplate {...entry.toJS().data} />
 ))
 CMS.registerPreviewTemplate('components-page', ({ entry }) => (
   <ComponentsPageTemplate {...entry.toJS().data} />
