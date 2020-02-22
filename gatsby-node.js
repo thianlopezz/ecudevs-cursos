@@ -7,6 +7,28 @@ const Axios = require('axios')
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
+  let { data: dataCursos } = await Axios.get(
+    `http://localhost:3001/api/cursos/planner/${35}`
+  )
+
+  let { cursos } = dataCursos
+  let cursosPageToCreate = cursos.filter(
+    curso => curso.isInfoCompleted && curso.slug
+  )
+
+  cursosPageToCreate.forEach((page, index) => {
+    const id = '' + page.idCurso
+    createPage({
+      // page slug set in admin ecudevs
+      path: `/cursos/${page.slug}/`,
+      component: path.resolve(`src/templates/CursoDetallePage.js`),
+      // additional data can be passed via context
+      context: {
+        id
+      }
+    })
+  })
+
   return graphql(`
     {
       allMarkdownRemark(limit: 1000) {

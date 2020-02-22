@@ -306,9 +306,8 @@ collections: # A list of collections the CMS should be able to edit
               label: Template,
               name: template,
               widget: hidden,
-              default: CursosPage,
+              default: CursoDetallePage,
             }
-          - { label: Slug, name: slug, widget: hidden, default: '' }
           - { label: Title, name: title, widget: string }
           - { label: Subtitle, name: subtitle, widget: markdown }
           - label: 'Meta'
