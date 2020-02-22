@@ -8,7 +8,7 @@ exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
   let { data: dataCursos } = await Axios.get(
-    `http://localhost:3001/api/cursos/planner/${35}`
+    `http://52.21.208.11:3002/api/cursos/planner/${35}`
   )
 
   let { cursos } = dataCursos
