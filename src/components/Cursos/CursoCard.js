@@ -14,7 +14,7 @@ const CursoCard = ({
   ...props
 }) => {
   return (
-    <Link to={slug} className={`CursoCard ${className}`}>
+    <Link to={'/cursos/' + slug} className={`CursoCard ${className}`}>
       {urlFoto && (
         <div className="CursoCard--Image relative">
           <Image background src={urlFoto} alt={curso} />
