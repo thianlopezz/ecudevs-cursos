@@ -41,14 +41,23 @@ export const HomePageTemplate = ({
   useEffect(() => {
     async function fetchData() {
       try {
-        let { data: dataCursos } = await Axios.get(
+        console.log('Llamada con fetch')
+        let response = await fetch(
           `${proxyConfig.url}/api/cursos/planner/${35}`
         )
+
+        let dataCursos = await response.json()
+        // let { data: dataCursos } = await Axios.get(
+        //   `${proxyConfig.url}/api/cursos/planner/${35}`
+        // )
         let { cursos } = dataCursos
 
-        let { data: dataCategorias } = await Axios.get(
-          `${proxyConfig.url}/api/categoria`
-        )
+        response = await fetch(`${proxyConfig.url}/api/categoria`)
+
+        let dataCategorias = await response.json()
+        // let { data: dataCategorias } = await Axios.get(
+        //   `${proxyConfig.url}/api/categoria`
+        // )
         let { categorias } = dataCategorias
 
         setTabs(
