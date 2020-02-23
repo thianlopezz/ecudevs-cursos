@@ -2,123 +2,115 @@ import React, { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 import Axios from 'axios'
 
-import Content from '../components/Content'
 import Layout from '../components/Layout'
-import CursosSection from '../components/Cursos/CursosSection'
-import Tabs from '../components/Tabs/Tabs'
 
-const filterCursos = (cursos = [], idCategoria) => {
-  let retorno = cursos.filter(curso =>
-    curso.categorias.find(categoria => categoria.idCategoria == idCategoria)
-  )
-  return retorno
-}
+import './CursoDetallePage.css'
+import CursoInfo from '../components/Cursos/CursoInfo'
+import TemasAccordion from '../components/Cursos/TemasAccordion'
+import Image from '../components/Image'
+import { proxyConfig } from '../helpers/proxyConfig'
 
 // Export Template for use in CMS preview
-export const CursoDetallePageTemplate = ({ title, discover, body }) => {
-  const [cursos, setCursos] = useState([])
-  const [cursosFilteredByCategory, setCursosFilteredByCategory] = useState([])
-  const [tabs, setTabs] = useState([])
-  const [activeTab, setActiveTab] = useState([])
-  const [busqueda, setBusqueda] = useState('')
+export const CursoDetallePageTemplate = ({
+  idCurso,
+  title,
+  discover,
+  body
+}) => {
+  const [curso, setCurso] = useState({})
 
   useEffect(() => {
     async function fetchData() {
-      let { data: dataCursos } = await Axios.get(
-        `http://localhost:3001/api/cursos/planner/${35}`
-      )
-      let { cursos } = dataCursos
-
-      let { data: dataCategorias } = await Axios.get(
-        `http://localhost:3001/api/categoria`
-      )
-      let { categorias } = dataCategorias
-
-      setTabs(
-        categorias.map(categoria => {
-          return { title: categoria.categoria, name: categoria.idCategoria }
-        })
-      )
-
-      if (categorias.length > 0) {
-        setActiveTab(categorias[0].idCategoria)
-        setCursos(cursos)
-        setCursosFilteredByCategory(
-          filterCursos(cursos, categorias[0].idCategoria)
-        )
-      }
+      let { data } = await Axios.get(`${proxyConfig.url}/api/curso/${idCurso}`)
+      let { curso } = data
+      setCurso(curso)
     }
 
     fetchData()
   }, [])
 
-  const filterFunction = curso => {
-    return (
-      curso.curso.toLowerCase().indexOf(busqueda.toLocaleLowerCase()) != -1 ||
-      curso.categorias.find(
-        categoria =>
-          categoria.categoria
-            .toLowerCase()
-            .indexOf(busqueda.toLocaleLowerCase()) != -1
-      )
-    )
-  }
-
   return (
-    <main className="Home">
-      {/* <PageHeader
-      large
-      title={title}
-      subtitle={subtitle}
-      backgroundImage={featuredImage}
-    /> */}
+    <main className="CursoDetalle">
       <section className="section">
         <div className="container">
-          <h1 className="taCenter">Todos los cursos</h1>
-          <div className="Form--Group">
-            <label
-              className="Form--Label"
-              style={{ width: '100%', marginBottom: '1rem' }}
-            >
-              <input
-                className="Form--Input Form--InputText"
-                type="text"
-                placeholder="Curso"
-                name="curso"
-                value={busqueda}
-                onChange={e => setBusqueda(e.target.value)}
+          <div className="row">
+            <div className="col-lg-8 col-md-6 col-sm-12 taCenter">
+              {curso.videoUrl ? (
+                <iframe
+                  className="video"
+                  src={curso.videoUrl}
+                  frameborder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              ) : (
+                <Image background src={curso.urlFoto} alt={curso.curso} />
+              )}
+            </div>
+            <div className="col-lg-4 col-md-6 col-sm-12">
+              <CursoInfo
+                curso={curso.curso}
+                precio={curso.precio}
+                categorias={curso.categorias}
               />
-              <span>Buscar un curso</span>
-            </label>
+            </div>
           </div>
-          {busqueda.length == 0 ? (
-            <>
-              <Tabs
-                activeTab={activeTab}
-                tabs={tabs}
-                onTabChange={name => {
-                  setActiveTab(name)
-                  setCursosFilteredByCategory(filterCursos(cursos, name))
-                }}
-              />
-              <CursosSection
-                cursos={cursosFilteredByCategory}
-                showLoadMore={false}
-              />
-            </>
-          ) : cursos.filter(filterFunction).length > 0 ? (
-            <CursosSection
-              cursos={cursos.filter(filterFunction)}
-              showLoadMore={false}
-            />
-          ) : (
-            <p>No hay cursos para mostrar</p>
-          )}
         </div>
       </section>
-      <section className="section">
-        <div className="container taCenter">
-          <Content source={body} />
+      <section className="section thin">
+        <div className="container">
+          <h2>Acerca de este curso</h2>
+          <p>{curso.descripcion}</p>
+        </div>
+      </section>
+      <section className="section thin">
+        <div className="container">
+          <h2>Tecnologías a usar</h2>
+          <div className="row">
+            {curso.tecnologias &&
+              curso.tecnologias.map(tecnologia => (
+                <div className="col-lg-3 col-md-4 col-sm-6 d-flex">
+                  <img
+                    className="mr-3"
+                    src={tecnologia.image}
+                    width="32px"
+                    height="32px"
+                  />
+                  <p>{tecnologia.tecnologia}</p>
+                </div>
+              ))}
+          </div>
+        </div>
+      </section>
+      <section className="section thin">
+        <div className="container">
+          <h2>4 cosas que aprenderás durante el curso</h2>
+          <div className="row">
+            {curso.capacidades &&
+              curso.capacidades.map(capacidad => (
+                <div className="col-lg-3 col-md-4 col-sm-6 d-flex">
+                  <p>{capacidad.capacidad}</p>
+                </div>
+              ))}
+          </div>
+        </div>
+      </section>
+      <section className="section thin">
+        <div className="container">
+          <h2>¿Qué requieres para tomar este curso?</h2>
+          <p>{curso.requerimientos}</p>
+        </div>
+      </section>
+      <section className="section thin">
+        <div className="container">
+          <h2>¿Qué incluye este curso?</h2>
+          <p>{curso.incluye}</p>
+        </div>
+      </section>
+      <section className="section thin">
+        <div className="container">
+          <h2>Clases del curso</h2>
+          <TemasAccordion temas={curso.temas} />
         </div>
       </section>
     </main>
@@ -126,12 +118,13 @@ export const CursoDetallePageTemplate = ({ title, discover, body }) => {
 }
 
 // Export Default HomePage for front-end
-const CursoDetallePage = ({ data: { page } }) => (
+const CursoDetallePage = ({ data: { page }, ...props }) => (
   <Layout meta={page.frontmatter.meta || false}>
     <CursoDetallePageTemplate
       {...page}
       {...page.frontmatter}
       body={page.html}
+      idCurso={props.pageContext.idCurso}
     />
   </Layout>
 )

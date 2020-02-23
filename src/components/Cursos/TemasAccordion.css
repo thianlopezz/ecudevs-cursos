@@ -1,0 +1,57 @@
+.TemasAccordion {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  /* margin: 0 auto; */
+}
+
+.TemasAccordion img {
+  position: absolute;
+  top: -15rem;
+  right: -7rem;
+  width: 20rem;
+  height: auto;
+}
+
+.TemasAccordion--item {
+  position: relative;
+  padding: 2rem;
+  background: white;
+  margin-bottom: 2rem;
+  /* border-radius: 1rem; */
+  box-shadow: 0px 2px 25px 0px rgba(84, 131, 157, 0.2);
+  cursor: pointer;
+}
+
+.TemasAccordion--item h2 {
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02rem;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.TemasAccordion--item svg {
+  float: right;
+  transition: ease all 0.3s;
+}
+
+.TemasAccordion--item.active svg {
+  transform: rotate(-180deg);
+}
+
+.TemasAccordion--item .description {
+  padding-top: 0;
+  opacity: 0;
+  transition: ease all 0.3s;
+  max-height: 0;
+}
+
+.TemasAccordion--item.active .description {
+  padding-top: 2rem;
+  opacity: 1;
+  max-height: 50rem;
+}

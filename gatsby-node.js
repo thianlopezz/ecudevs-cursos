@@ -4,30 +4,26 @@ const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 const Axios = require('axios')
 
+let urlCursosBase = 'http://localhost:3001'
+
+if (process.env.NODE_ENV === 'production') {
+  urlCursosBase = 'http://52.21.208.11:3002'
+  console.log('We are on ' + process.env.NODE_ENV)
+} else {
+  console.log('We are on ' + process.env.NODE_ENV)
+}
+
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
   let { data: dataCursos } = await Axios.get(
-    `http://52.21.208.11:3002/api/cursos/planner/${35}`
+    `${urlCursosBase}/api/cursos/planner/${35}`
   )
 
   let { cursos } = dataCursos
   let cursosPageToCreate = cursos.filter(
     curso => curso.isInfoCompleted && curso.slug
   )
-
-  cursosPageToCreate.forEach((page, index) => {
-    const id = '' + page.idCurso
-    createPage({
-      // page slug set in admin ecudevs
-      path: `/cursos/${page.slug}/`,
-      component: path.resolve(`src/templates/CursoDetallePage.js`),
-      // additional data can be passed via context
-      context: {
-        id
-      }
-    })
-  })
 
   return graphql(`
     {
@@ -62,6 +58,7 @@ exports.createPages = async ({ actions, graphql }) => {
         // get pages with template field
         _.get(page, `node.frontmatter.template`)
       )
+
       if (!pagesToCreate.length) return console.log(`Skipping ${contentType}`)
 
       console.log(`Creating ${pagesToCreate.length} ${contentType}`)
@@ -79,6 +76,26 @@ exports.createPages = async ({ actions, graphql }) => {
             id
           }
         })
+      })
+    })
+
+    console.log('Creating cursos page, finding id for query')
+    let cursoDetallePage = contentTypes.pages.find(
+      page => page.node.frontmatter.template == 'CursoDetallePage'
+    )
+    console.log(JSON.stringify(cursoDetallePage))
+
+    cursosPageToCreate.forEach((page, index) => {
+      const id = cursoDetallePage.node.id
+      createPage({
+        // page slug set in admin ecudevs
+        path: `/cursos/${page.slug}/`,
+        component: path.resolve(`src/templates/CursoDetallePage.js`),
+        // additional data can be passed via context
+        context: {
+          id,
+          idCurso: page.idCurso
+        }
       })
     })
   })

@@ -11,6 +11,7 @@ import CursosSection from '../components/Cursos/CursosSection'
 import Tabs from '../components/Tabs/Tabs'
 import TutoresSection from '../components/Tutores/TutoresSection'
 import ComentariosSection from '../components/Comentarios/ComentariosSection'
+import { proxyConfig } from '../helpers/proxyConfig'
 
 const filterCursos = (cursos = [], idCategoria) => {
   let retorno = cursos.filter(curso =>
@@ -40,12 +41,12 @@ export const HomePageTemplate = ({
   useEffect(() => {
     async function fetchData() {
       let { data: dataCursos } = await Axios.get(
-        `http://localhost:3001/api/cursos/planner/${35}`
+        `${proxyConfig.url}/api/cursos/planner/${35}`
       )
       let { cursos } = dataCursos
 
       let { data: dataCategorias } = await Axios.get(
-        `http://localhost:3001/api/categoria`
+        `${proxyConfig.url}/api/categoria`
       )
       let { categorias } = dataCategorias
 

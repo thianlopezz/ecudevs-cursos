@@ -1,0 +1,153 @@
+@media (min-width: 1280px) {
+  .card {
+    max-width: 392px;
+    width: 100%;
+    box-shadow: rgba(41, 98, 182, 0.12) 0px 2px 10px;
+    padding: 40px 32px;
+    margin: 0px;
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 32px 0px 48px;
+  }
+}
+
+.card {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  position: relative;
+  transition: opacity 0.3s ease-in-out 0s;
+  padding: 32px 16px 48px;
+}
+
+.badge {
+  background-color: var(--second);
+  padding: 4px 9px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-bottom: 1rem;
+}
+
+.badge span {
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 768px) {
+  .badge.span {
+    letter-spacing: 0.1px;
+  }
+}
+
+.titulo {
+  letter-spacing: 0.1px;
+  font-size: 18px;
+  color: #181b32;
+  line-height: 24px;
+  font-weight: 800;
+  font-family: Gilroy, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 768px) {
+  .titulo {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .titulo {
+    line-height: 28px;
+  }
+}
+
+.flex-col {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.justify-between {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.items-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.signo {
+  letter-spacing: 0.4px;
+  font-size: 18px;
+  color: var(--second);
+  line-height: 24px;
+  font-weight: 800 !important;
+}
+
+@media (min-width: 768px) {
+  .signo {
+    line-height: 32px;
+  }
+}
+
+.precio {
+  letter-spacing: 0.4px;
+  font-size: 18px;
+  color: var(--second);
+  line-height: 24px;
+  font-weight: 800 !important;
+  -webkit-font-smoothing: antialiased;
+  font-weight: unset;
+}
+
+@media (min-width: 768px) {
+  .precio {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 768px) {
+  .precio {
+    line-height: 40px;
+  }
+}
+
+.precioRegular {
+  font-size: 14px;
+  color: #8d8d9d;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+  font-weight: unset;
+}
+
+.valorRegular {
+  text-decoration: line-through;
+}
+
+.botonera {
+  margin-top: 1rem;
+}
+
+/* .font-gil {
+  font-family: Gilroy, Arial, sans-serif;
+} */

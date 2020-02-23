@@ -28,7 +28,7 @@ export class Navigation extends Component {
 
   render() {
     const { active } = this.state,
-      { subNav, hideLogo = false } = this.props,
+      { subNav } = this.props,
       NavLink = ({ to, className, children, ...props }) => (
         <Link
           to={to}
@@ -45,11 +45,9 @@ export class Navigation extends Component {
     return (
       <nav className={`Nav ${active ? 'Nav-active' : ''}`}>
         <div className="Nav--Container container">
-          {hideLogo && (
-            <Link to="/" onClick={this.handleLinkClick}>
-              <Logo />
-            </Link>
-          )}
+          <Link to="/" onClick={this.handleLinkClick}>
+            <Logo />
+          </Link>
           <div className="Nav--Links">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/cursos">Cursos</NavLink>

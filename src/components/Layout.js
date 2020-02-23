@@ -8,6 +8,7 @@ import GithubCorner from './GithubCorner'
 
 import 'modern-normalize/modern-normalize.css'
 import './globalStyles.css'
+import 'bootstrap/dist/css/bootstrap-grid.min.css'
 
 export default ({ children, meta, title }) => {
   return (
