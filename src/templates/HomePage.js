@@ -40,26 +40,31 @@ export const HomePageTemplate = ({
 
   useEffect(() => {
     async function fetchData() {
-      let { data: dataCursos } = await Axios.get(
-        `${proxyConfig.url}/api/cursos/planner/${35}`
-      )
-      let { cursos } = dataCursos
+      try {
+        let { data: dataCursos } = await Axios.get(
+          `${proxyConfig.url}/api/cursos/planner/${35}`
+        )
+        let { cursos } = dataCursos
 
-      let { data: dataCategorias } = await Axios.get(
-        `${proxyConfig.url}/api/categoria`
-      )
-      let { categorias } = dataCategorias
+        let { data: dataCategorias } = await Axios.get(
+          `${proxyConfig.url}/api/categoria`
+        )
+        let { categorias } = dataCategorias
 
-      setTabs(
-        categorias.map(categoria => {
-          return { title: categoria.categoria, name: categoria.idCategoria }
-        })
-      )
+        setTabs(
+          categorias.map(categoria => {
+            return { title: categoria.categoria, name: categoria.idCategoria }
+          })
+        )
 
-      if (categorias.length > 0) {
-        setActiveTab(categorias[0].idCategoria)
-        setCursos(cursos)
-        setCursosFiltered(filterCursos(cursos, categorias[0].idCategoria))
+        if (categorias.length > 0) {
+          setActiveTab(categorias[0].idCategoria)
+          setCursos(cursos)
+          setCursosFiltered(filterCursos(cursos, categorias[0].idCategoria))
+        }
+      } catch (e) {
+        console.log('Couldnt fetch data from api')
+        console.log(JSON.stringify(e))
       }
     }
 
