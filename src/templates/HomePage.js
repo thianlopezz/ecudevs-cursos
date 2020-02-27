@@ -101,9 +101,11 @@ export const HomePageTemplate = ({
   const [tabs, setTabs] = useState([])
   const [activeTab, setActiveTab] = useState([])
 
-  const { loading, error, data } = useQuery(APOLLO_QUERY)
+  const { loading, error, data } = useQuery(APOLLO_QUERY, {
+    errorPolicy: 'all'
+  })
   console.log('error')
-  console.log(error)
+  console.log(error && JSON.stringify(error))
 
   useEffect(() => {
     if (data) {
