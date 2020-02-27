@@ -13,6 +13,7 @@ import TutoresSection from '../components/Tutores/TutoresSection'
 import ComentariosSection from '../components/Comentarios/ComentariosSection'
 import Loading from '../components/common/Loading/Loading'
 import { proxyConfig } from '../helpers/proxyConfig'
+import PageHeader from '../components/PageHeader'
 
 const filterCursos = (cursos = [], idCategoria) => {
   let retorno = cursos.filter(curso =>
@@ -22,7 +23,12 @@ const filterCursos = (cursos = [], idCategoria) => {
 }
 
 // Export Template for use in CMS preview
-export const CursosPageTemplate = ({ title, discover, body }) => {
+export const CursosPageTemplate = ({
+  title,
+  subtitle,
+  featuredImage,
+  body
+}) => {
   const [loading, setLoading] = useState(true)
   const [cursos, setCursos] = useState([])
   const [cursosFilteredByCategory, setCursosFilteredByCategory] = useState([])
@@ -76,12 +82,12 @@ export const CursosPageTemplate = ({ title, discover, body }) => {
 
   return (
     <main className="Home">
-      {/* <PageHeader
-      large
-      title={title}
-      subtitle={subtitle}
-      backgroundImage={featuredImage}
-    /> */}
+      <PageHeader
+        large
+        title={title}
+        subtitle={subtitle}
+        backgroundImage={featuredImage}
+      />
       {loading ? (
         <section className="section taCenter">
           <Loading />
@@ -118,6 +124,7 @@ export const CursosPageTemplate = ({ title, discover, body }) => {
                 />
                 <CursosSection
                   cursos={cursosFilteredByCategory}
+                  showAll
                   showLoadMore={false}
                 />
               </>
@@ -162,6 +169,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         subtitle
+        featuredImage
       }
     }
   }

@@ -23,15 +23,9 @@ class CursosSection extends React.Component {
     }))
 
   render() {
-    const {
-        cursos,
-        title,
-        showLoadMore,
-        loadMoreTitle,
-        onLoadMore
-      } = this.props,
+    const { cursos, title, showAll, onLoadMore } = this.props,
       { limit } = this.state,
-      visibleCursos = cursos.slice(0, limit || cursos.length)
+      visibleCursos = showAll ? cursos : cursos.slice(0, limit || cursos.length)
 
     return (
       <div className="CursosSection">
@@ -43,13 +37,6 @@ class CursosSection extends React.Component {
             ))}
           </div>
         )}
-        {/* {showLoadMore && visibleCursos.length < cursos.length && (
-          <div className="taCenter">
-            <button className="button" onClick={this.increaseLimit}>
-              {loadMoreTitle}
-            </button>
-          </div>
-        )} */}
         {onLoadMore && (
           <div className="taCenter">
             <button className="button" onClick={onLoadMore}>

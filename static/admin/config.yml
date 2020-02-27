@@ -227,7 +227,11 @@ collections: # A list of collections the CMS should be able to edit
               - { label: 'Foto', name: 'foto', widget: string }
               - { label: 'Descripicion', name: 'descripcion', widget: text }
           - { label: QueDicen, name: dicen, widget: string }
-          - { label: QueDicenDescripcion, name: queDicenDescripcion, widget: markdown }
+          - {
+              label: QueDicenDescripcion,
+              name: queDicenDescripcion,
+              widget: markdown,
+            }
           - label: 'Comentarios'
             name: 'comentarios'
             widget: 'list'
@@ -273,6 +277,7 @@ collections: # A list of collections the CMS should be able to edit
           - { label: Slug, name: slug, widget: hidden, default: '' }
           - { label: Title, name: title, widget: string }
           - { label: Subtitle, name: subtitle, widget: markdown }
+          - { label: FeaturedImage, name: featuredImage, widget: string }
           - label: 'Meta'
             required: false
             name: 'meta'
