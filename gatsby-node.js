@@ -7,7 +7,7 @@ const Axios = require('axios')
 let urlCursosBase = 'http://localhost:3001'
 
 if (process.env.NODE_ENV === 'production') {
-  urlCursosBase = 'http://52.21.208.11:3002'
+  urlCursosBase = 'https://www.ecudevs.com:8081'
   console.log('We are on ' + process.env.NODE_ENV)
 } else {
   console.log('We are on ' + process.env.NODE_ENV)
