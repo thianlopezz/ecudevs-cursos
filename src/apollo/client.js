@@ -5,10 +5,11 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { createHttpLink } from 'apollo-link-http'
 import { onError } from 'apollo-link-error'
 import { ApolloLink } from 'apollo-link'
+import { proxyConfig } from '../helpers/proxyConfig'
 
 const httpLink = () =>
   createHttpLink({
-    uri: 'http://52.21.208.11:3002/graphql'
+    uri: `${proxyConfig.url}/graphql`
   })
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
