@@ -9,24 +9,38 @@ if (process.env.NETLIFY_MAP_KEY) {
 
 class GoogleMap extends Component {
   static defaultProps = {
-    center: {
-      lat: -28.0914483,
-      lng: 153.4425208
-    },
-    zoom: 14
+    zoom: 18
   }
 
   render() {
+    const { locations } = this.props
+    let firstLocation = locations[0]
+
     return (
       // Important! Always set the container height explicitly
+
       <div style={{ height: '50vh', width: '100%' }}>
-        <GoogleMapReact
+        <iframe
+          src={firstLocation.mapLink}
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          style={{ border: 0 }}
+          allowFullScreen
+        />
+        {/* <GoogleMapReact
           bootstrapURLKeys={{ key: mapkey }}
-          defaultCenter={this.props.center}
+          defaultCenter={
+            firstLocation
+              ? { lat: +firstLocation.lat, lng: +firstLocation.lng }
+              : this.props.center
+          }
           defaultZoom={this.props.zoom}
         >
-          <Marker lat={-28.0914483} lng={153.4425208} text={'Kreyser Avrora'} />
-        </GoogleMapReact>
+          {locations.map(location => (
+            <Marker lat={location.lat} lng={location.lng} text={'Ecudevs'} />
+          ))}
+        </GoogleMapReact> */}
       </div>
     )
   }
