@@ -178,7 +178,7 @@ class ContactoForm extends React.Component {
           </label>
           <div
             className="g-recaptcha"
-            data-sitekey="6LfKN3kUAAAAAGIM1CbXmaRZx3LIh_W2twn1tzkA"
+            data-sitekey="6LcVAt0UAAAAAHVhfscQ-zz7qmHVAZ8KV_1LItII"
           />
           {!!subject && <input type="hidden" name="subject" value={subject} />}
           <input type="hidden" name="form-name" value={name} />
