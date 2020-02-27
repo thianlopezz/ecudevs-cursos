@@ -11,7 +11,7 @@ export default function CursoInfo({
   onReserva
 }) {
   return (
-    <div class="card">
+    <div className="card">
       {categorias &&
         categorias.map(categoria => (
           <div className="badge">
@@ -19,36 +19,36 @@ export default function CursoInfo({
           </div>
         ))}
 
-      <div class="flex flex-col">
-        <div class="flex justify-between">
-          <h1 class="titulo">{curso}</h1>
+      <div className="flex flex-col">
+        <div className="flex justify-between">
+          <h1 className="titulo">{curso}</h1>
         </div>
-        <div class="flex items-center justify-between w-full">
+        <div className="flex items-center justify-between w-full">
           <h3>{inicio}</h3>
         </div>
 
-        <div class="flex flex-col mt-16">
-          <div class="flex items-center justify-between w-full">
-            <p class="">
-              <span class="signo">US$</span>
-              <span class="precio">{precio}</span>
+        <div className="flex flex-col mt-16">
+          <div className="flex items-center justify-between w-full">
+            <p className="">
+              <span className="signo">US$</span>
+              <span className="precio">{precio}</span>
             </p>
           </div>
           {promocion && (
             <>
-              <div class="flex items-center justify-between w-full">
-                <span class="precioRegular">Precio Regular</span>
-                <span class="precioRegular valorRegular">US$ 57</span>
+              <div className="flex items-center justify-between w-full">
+                <span className="precioRegular">Precio Regular</span>
+                <span className="precioRegular valorRegular">US$ 57</span>
               </div>
-              <div class="flex items-center justify-between w-full">
-                <span class="precioRegular">Ahorras</span>
-                <span class="precioRegular">US$42.01 (73%)</span>
+              <div className="flex items-center justify-between w-full">
+                <span className="precioRegular">Ahorras</span>
+                <span className="precioRegular">US$42.01 (73%)</span>
               </div>
             </>
           )}
         </div>
       </div>
-      <div class="botonera">
+      <div className="botonera">
         <button onClick={onReserva} className="Button w-full" type="button">
           Reservar
         </button>

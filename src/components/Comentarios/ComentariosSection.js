@@ -14,8 +14,8 @@ export default function ComentariosSection({
         <Content source={queDicenDescripcion} />
       </div>
       <div className="ComentariosSection--Grid">
-        {comentarios.map(comentario => (
-          <ComentarioCard {...comentario} />
+        {comentarios.map((comentario, index) => (
+          <ComentarioCard key={comentario.titulo + index} {...comentario} />
         ))}
       </div>
     </>
