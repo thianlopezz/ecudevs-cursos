@@ -23,6 +23,7 @@
 }
 
 .badge {
+	margin-right: .2rem;
 	background-color: var(--second);
 	padding: 4px 9px;
 	display: -webkit-inline-box;
