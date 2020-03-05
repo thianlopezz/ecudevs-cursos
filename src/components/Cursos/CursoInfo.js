@@ -1,15 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import './CursoInfo.css'
+import Calendar from '../Calendar/Calendar'
+import moment from 'moment'
+import AccordionItem from '../Accordion/AccordionItem'
 
 export default function CursoInfo({
   curso,
-  precio,
-  inicio,
+  precioDefault,
+  modulos,
   promocion,
   categorias,
   onReserva
 }) {
+  const [selectedDate, setSelectedDate] = useState()
+  // const [moduloSelected, setModuloSelected] = useState()
+
+  useEffect(() => {
+    const setDefaultDate = () => {
+      if (modulos[0]) {
+        setSelectedDate(moment(modulos[0].feInicio))
+      }
+    }
+
+    setDefaultDate()
+  }, [modulos])
+
+  const onSelectDate = fecha => {
+    let existeFecha = modulos.find(modulo =>
+      moment(modulo.feInicio).isSame(moment(fecha), 'date')
+    )
+    existeFecha && setSelectedDate(moment(fecha))
+  }
+
+  let fechaModulos = modulos.map(modulo => moment(modulo.feInicio))
+
+  let moduloSelected = modulos.find(modulo => {
+    return moment(modulo.feInicio).isSame(moment(selectedDate), 'date')
+  })
+
+  moduloSelected = moduloSelected || {}
+
   return (
     <div className="card">
       {categorias &&
@@ -18,20 +49,59 @@ export default function CursoInfo({
             <span>{categoria.categoria}</span>
           </div>
         ))}
-
       <div className="flex flex-col">
         <div className="flex justify-between">
           <h1 className="titulo">{curso}</h1>
         </div>
         <div className="flex items-center justify-between w-full">
-          <h3>{inicio}</h3>
+          {moment(selectedDate).isSame(moment(fechaModulos[0]), 'date') ? (
+            <h3>Próxima fecha</h3>
+          ) : (
+            <h3>Fecha</h3>
+          )}
+        </div>
+        <div
+          className="flex items-center justify-between w-full"
+          style={{ marginBottom: '0.5em' }}
+        >
+          <AccordionItem title={moment(selectedDate).format('DD/MM/YYYY')}>
+            <h5>Elige entre las fechas disponibles</h5>
+            <Calendar
+              datesChecked={fechaModulos}
+              value={selectedDate}
+              onChange={date => onSelectDate(date)}
+            />
+          </AccordionItem>
+        </div>
+        {/* <div className="flex items-center justify-between w-full">
+          <h3>Duración</h3>
+        </div> */}
+        <div className="flex items-center justify-between w-full">
+          <h3>Duración</h3>
+          <h3 style={{ color: '#8d8d9d' }}>{moduloSelected.duracion}H</h3>
+        </div>
+        <div className="flex items-center justify-between w-full">
+          <h3 style={{ marginBottom: '0.01em' }}>Horario</h3>
+        </div>
+        <div className="flex items-center justify-between w-full">
+          {moduloSelected.fechas && (
+            <h3 style={{ color: '#8d8d9d' }}>
+              {moduloSelected.fechas
+                .map(fecha => moment(fecha.fecha).format('dddd'))
+                .join(', ')}
+              {' - '}
+              {moment(moduloSelected.fechas[0].horaInicio).format('hh:mma') +
+                ' a ' +
+                moment(moduloSelected.fechas[0].horaFin).format('hh:mma')}
+            </h3>
+          )}
         </div>
 
         <div className="flex flex-col mt-16">
           <div className="flex items-center justify-between w-full">
             <p className="">
               <span className="signo">US$</span>
-              <span className="precio">{precio}</span>
+              <span className="precio">{precioDefault}</span>
             </p>
           </div>
           {promocion && (
@@ -49,7 +119,14 @@ export default function CursoInfo({
         </div>
       </div>
       <div className="botonera">
-        <button onClick={onReserva} className="Button w-full" type="button">
+        <button
+          onClick={() => {
+            debugger
+            onReserva()
+          }}
+          className="Button w-full"
+          type="button"
+        >
           Reservar
         </button>
       </div>

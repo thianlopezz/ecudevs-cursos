@@ -10,6 +10,11 @@ import 'modern-normalize/modern-normalize.css'
 import './globalStyles.css'
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 
+import moment from 'moment'
+import 'moment/locale/es'
+
+moment.locale('es')
+
 export default ({ children, meta, title }) => {
   return (
     <StaticQuery

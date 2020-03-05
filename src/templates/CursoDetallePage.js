@@ -18,15 +18,27 @@ export const CursoDetallePageTemplate = ({
   body
 }) => {
   const [curso, setCurso] = useState({})
+  const [modulos, setModulos] = useState([])
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchCurso() {
       let { data } = await Axios.get(`${proxyConfig.url}/api/curso/${idCurso}`)
       let { curso } = data
       setCurso(curso)
     }
 
-    fetchData()
+    async function fetchModulos() {
+      let { data } = await Axios.get(
+        `${proxyConfig.url}/api/modulo/curso/${idCurso}`
+      )
+
+      let { modulos } = data
+
+      setModulos(modulos)
+    }
+
+    fetchCurso()
+    fetchModulos()
   }, [])
 
   return (
@@ -50,8 +62,13 @@ export const CursoDetallePageTemplate = ({
             <div className="col-lg-4 col-md-6 col-sm-12">
               <CursoInfo
                 curso={curso.curso}
-                precio={curso.precio}
+                precioDefault={curso.precio}
                 categorias={curso.categorias}
+                modulos={modulos}
+                onReserva={() => {
+                  const url = `https://wa.me/593986402584?text=Hola%20quiero%20inscribirme%20en%20el%20curso%20de%20${curso.curso}`
+                  window.open(url, '_blank')
+                }}
               />
             </div>
           </div>
