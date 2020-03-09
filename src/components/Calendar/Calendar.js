@@ -141,6 +141,9 @@ const Wrapper = styled.div`
   .MuiIconButton-label svg {
     transform: unset!important;
   }
+  span {
+    color: unset;
+  }
 `
 
 const SelectedDay = styled.div`

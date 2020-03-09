@@ -87,12 +87,20 @@ export default function CursoInfo({
           {moduloSelected.fechas && (
             <h3 style={{ color: '#8d8d9d' }}>
               {moduloSelected.fechas
-                .map(fecha => moment(fecha.fecha).format('dddd'))
+                .map(fecha =>
+                  moment(fecha.fecha)
+                    .utc()
+                    .format('dddd DD')
+                )
                 .join(', ')}
               {' - '}
-              {moment(moduloSelected.fechas[0].horaInicio).format('hh:mma') +
+              {moment(moduloSelected.fechas[0].horaInicio)
+                .utc()
+                .format('hh:mma') +
                 ' a ' +
-                moment(moduloSelected.fechas[0].horaFin).format('hh:mma')}
+                moment(moduloSelected.fechas[0].horaFin)
+                  .utc()
+                  .format('hh:mma')}
             </h3>
           )}
         </div>

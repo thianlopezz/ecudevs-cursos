@@ -1,10 +1,10 @@
 const palette = {
   primary: {
-    main: '#009ADA',
+    main: '#00a89a',
     contrastText: '#ffffff'
   },
   secondary: {
-    main: '#006c70',
+    main: '#ff5a5f',
     contrastText: '#ffffff'
   },
   error: {
