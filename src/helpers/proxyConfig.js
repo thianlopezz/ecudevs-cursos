@@ -1,7 +1,7 @@
 let urlBase = 'http://localhost:3001'
 
 if (process.env.NODE_ENV === 'production') {
-  urlBase = 'https://www.ecudevs.com:8081'
+  urlBase = 'https://api.ecudevs.com'
 } else {
   console.log('We are on ' + process.env.NODE_ENV)
 }
