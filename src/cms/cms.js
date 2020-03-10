@@ -10,6 +10,7 @@ import { BlogIndexTemplate } from '../templates/BlogIndex'
 import { SinglePostTemplate } from '../templates/SinglePost'
 import { CursosPageTemplate } from '../templates/CursosPage'
 import { CursoDetallePageTemplate } from '../templates/CursoDetallePage'
+import { CheckoutPageTemplate } from '../templates/CheckoutPage'
 
 if (
   window.location.hostname === 'localhost' &&
@@ -30,6 +31,9 @@ CMS.registerPreviewTemplate('cursos-page', ({ entry }) => (
 ))
 CMS.registerPreviewTemplate('curso-detalle-page', ({ entry }) => (
   <CursoDetallePageTemplate {...entry.toJS().data} />
+))
+CMS.registerPreviewTemplate('checkout-page', ({ entry }) => (
+  <CheckoutPageTemplate {...entry.toJS().data} />
 ))
 CMS.registerPreviewTemplate('components-page', ({ entry }) => (
   <ComponentsPageTemplate {...entry.toJS().data} />

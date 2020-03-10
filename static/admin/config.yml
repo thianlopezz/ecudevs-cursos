@@ -340,6 +340,43 @@ collections: # A list of collections the CMS should be able to edit
                   required: false,
                 }
 
+      - file: 'content/pages/checkout.md'
+        label: 'Checkout'
+        name: 'chekout-page'
+        fields:
+          - {
+              label: Template,
+              name: template,
+              widget: hidden,
+              default: CheckoutPage,
+            }
+          - { label: Title, name: title, widget: string }
+          - { label: Subtitle, name: subtitle, widget: markdown }
+          - label: 'Meta'
+            required: false
+            name: 'meta'
+            widget: 'object'
+            fields:
+              - { label: Title, name: title, widget: string, required: false }
+              - {
+                  label: Description,
+                  name: description,
+                  widget: text,
+                  required: false,
+                }
+              - {
+                  label: Canonical Link,
+                  name: canonicalLink,
+                  widget: string,
+                  required: false,
+                }
+              - {
+                  label: Noindex,
+                  name: noindex,
+                  widget: boolean,
+                  required: false,
+                }
+
   - name: infoPages
     label: Info Page
     editor:
