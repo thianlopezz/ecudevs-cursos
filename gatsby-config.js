@@ -1,5 +1,7 @@
 const postcssPresetEnv = require('postcss-preset-env')
 
+let facebook_pixel = '471226703665611'
+
 module.exports = {
   siteMetadata: {
     title: 'Yelloecake',
@@ -135,6 +137,12 @@ module.exports = {
         enableIdentityWidget: true
       }
     },
-    'gatsby-plugin-netlify' // make sure to keep it last in the array
+    'gatsby-plugin-netlify', // make sure to keep it last in the array,
+    {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: facebook_pixel
+      }
+    }
   ]
 }
