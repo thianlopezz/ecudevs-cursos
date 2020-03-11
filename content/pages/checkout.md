@@ -1,6 +1,6 @@
 ---
 template: CheckoutPage
-title: Checkout
+title: Checkout2
 subtitle: Subtitle2
 meta:
   title: Checkout
