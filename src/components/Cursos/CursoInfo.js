@@ -4,6 +4,7 @@ import './CursoInfo.css'
 import Calendar from '../Calendar/Calendar'
 import moment from 'moment'
 import AccordionItem from '../Accordion/AccordionItem'
+import FeInicio from './FeInicio'
 
 export default function CursoInfo({
   curso,
@@ -53,58 +54,73 @@ export default function CursoInfo({
         <div className="flex justify-between">
           <h1 className="titulo">{curso}</h1>
         </div>
-        <div className="flex items-center justify-between w-full">
-          {moment(selectedDate).isSame(moment(fechaModulos[0]), 'date') ? (
-            <h3>Próxima fecha</h3>
-          ) : (
-            <h3>Fecha</h3>
-          )}
-        </div>
+        {fechaModulos && fechaModulos.length > 0 && (
+          <div className="flex items-center justify-between w-full">
+            {moment(selectedDate).isSame(moment(fechaModulos[0]), 'date') ? (
+              <h3>Próxima fecha</h3>
+            ) : (
+              <h3>Fecha</h3>
+            )}
+          </div>
+        )}
         <div
-          className="flex items-center justify-between w-full"
+          className="items-center justify-between w-full"
           style={{ marginBottom: '0.5em' }}
         >
-          <AccordionItem title={moment(selectedDate).format('DD/MM/YYYY')}>
-            <h5>Elige entre las fechas disponibles</h5>
-            <Calendar
-              datesChecked={fechaModulos}
-              value={selectedDate}
-              onChange={date => onSelectDate(date)}
-            />
-          </AccordionItem>
+          {!fechaModulos || !fechaModulos.length > 0 ? (
+            <>
+              <FeInicio feInicio="No hay fechas disponibles" />
+              <p style={{ textAlign: 'justify' }} className="mt-1">
+                Pero no te preocupes, también puedes preguntar por este curso en
+                modalidad <strong>In Company</strong>.
+              </p>
+            </>
+          ) : (
+            <AccordionItem title={moment(selectedDate).format('DD/MM/YYYY')}>
+              <h5>Elige entre las fechas disponibles</h5>
+              <Calendar
+                datesChecked={fechaModulos}
+                value={selectedDate}
+                onChange={date => onSelectDate(date)}
+              />
+            </AccordionItem>
+          )}
         </div>
         {/* <div className="flex items-center justify-between w-full">
           <h3>Duración</h3>
         </div> */}
-        <div className="flex items-center justify-between w-full">
-          <h3>Duración</h3>
-          <h3 style={{ color: '#8d8d9d' }}>{moduloSelected.duracion}H</h3>
-        </div>
-        <div className="flex items-center justify-between w-full">
-          <h3 style={{ marginBottom: '0.01em' }}>Horario</h3>
-        </div>
-        <div className="flex items-center justify-between w-full">
-          {moduloSelected.fechas && (
-            <h3 style={{ color: '#8d8d9d' }}>
-              {moduloSelected.fechas
-                .map(fecha =>
-                  moment(fecha.fecha)
+        {fechaModulos && fechaModulos.length > 0 && (
+          <>
+            <div className="flex items-center justify-between w-full">
+              <h3>Duración</h3>
+              <h3 style={{ color: '#8d8d9d' }}>{moduloSelected.duracion}H</h3>
+            </div>
+            <div className="flex items-center justify-between w-full">
+              <h3 style={{ marginBottom: '0.01em' }}>Horario</h3>
+            </div>
+            <div className="flex items-center justify-between w-full">
+              {moduloSelected.fechas && (
+                <h3 style={{ color: '#8d8d9d' }}>
+                  {moduloSelected.fechas
+                    .map(fecha =>
+                      moment(fecha.fecha)
+                        .utc()
+                        .format('dddd DD')
+                    )
+                    .join(', ')}
+                  {' - '}
+                  {moment(moduloSelected.fechas[0].horaInicio)
                     .utc()
-                    .format('dddd DD')
-                )
-                .join(', ')}
-              {' - '}
-              {moment(moduloSelected.fechas[0].horaInicio)
-                .utc()
-                .format('hh:mma') +
-                ' a ' +
-                moment(moduloSelected.fechas[0].horaFin)
-                  .utc()
-                  .format('hh:mma')}
-            </h3>
-          )}
-        </div>
-
+                    .format('hh:mma') +
+                    ' a ' +
+                    moment(moduloSelected.fechas[0].horaFin)
+                      .utc()
+                      .format('hh:mma')}
+                </h3>
+              )}
+            </div>
+          </>
+        )}
         <div className="flex flex-col mt-16">
           <div className="flex items-center justify-between w-full">
             <p className="">
@@ -126,18 +142,22 @@ export default function CursoInfo({
           )}
         </div>
       </div>
-      <div className="botonera">
-        <button
-          onClick={() => {
-            debugger
-            onReserva()
-          }}
-          className="Button w-full"
-          type="button"
-        >
-          Reservar
-        </button>
-      </div>
+      {fechaModulos && fechaModulos.length > 0 && (
+        <div className="botonera">
+          <button
+            onClick={() => {
+              let index = fechaModulos.findIndex(d =>
+                moment(selectedDate).isSame(d, 'day')
+              )
+              onReserva(modulos[index])
+            }}
+            className="Button w-full"
+            type="button"
+          >
+            Reservar
+          </button>
+        </div>
+      )}
     </div>
   )
 }

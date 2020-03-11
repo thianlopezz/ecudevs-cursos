@@ -350,8 +350,58 @@ collections: # A list of collections the CMS should be able to edit
               widget: hidden,
               default: CheckoutPage,
             }
+          - { label: Slug, name: slug, widget: hidden, default: '' }
+          - { label: Title, name: title, widget: string, required: false }
+          - {
+              label: Subtitle,
+              name: subtitle,
+              widget: markdown,
+              required: false,
+            }
+          - label: 'Meta'
+            required: false
+            name: 'meta'
+            widget: 'object'
+            fields:
+              - { label: Title, name: title, widget: string, required: false }
+              - {
+                  label: Description,
+                  name: description,
+                  widget: text,
+                  required: false,
+                }
+              - {
+                  label: Canonical Link,
+                  name: canonicalLink,
+                  widget: string,
+                  required: false,
+                }
+              - {
+                  label: Noindex,
+                  name: noindex,
+                  widget: boolean,
+                  required: false,
+                }
+
+      - file: 'content/pages/purchase-success.md'
+        label: 'Purchase success'
+        name: 'purchase-success'
+        fields:
+          - {
+              label: Template,
+              name: template,
+              widget: hidden,
+              default: PurchaseSuccess,
+            }
+          - { label: Slug, name: slug, widget: hidden, default: '' }
           - { label: Title, name: title, widget: string }
-          - { label: Subtitle, name: subtitle, widget: markdown }
+          - {
+              label: Subtitle,
+              name: subtitle,
+              widget: markdown,
+              required: false,
+            }
+          - { label: Body, name: body, widget: markdown }
           - label: 'Meta'
             required: false
             name: 'meta'

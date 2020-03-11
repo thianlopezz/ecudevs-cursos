@@ -1,21 +1,20 @@
 import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
-import { stringify } from 'qs'
 import { serialize } from 'dom-form-serializer'
 
 import '../Form.css'
 import Axios from 'axios'
 import { proxyConfig } from '../../helpers/proxyConfig'
 
-class ContactoForm extends React.Component {
+class CheckoutForm extends React.Component {
   static defaultProps = {
-    name: 'Formulario de contacto',
+    name: 'Formulario de registro',
     subject: '', // optional subject of the notification email
     action: '',
     successMessage:
-      'Gracias por escribirnos, nos pondremos en contacto contigo lo más pronto posible.',
+      'Gracias por registrarte en nuestro curso, en breve un asesor se comunicar.',
     errorMessage:
-      '¡Ups! No hemos podido recibir tu mensaje, pero no te preocupes, intenta contactarnos por correo electrónico.'
+      '¡Ups! No hemos podido recibir tu inscripción, pero no te preocupes, intenta contactarnos por correo electrónico.'
   }
 
   state = {
@@ -31,24 +30,23 @@ class ContactoForm extends React.Component {
     const data = serialize(form)
     this.setState({ disabled: true })
 
-    Axios.post(`${proxyConfig.url}/api/mensajeContacto`, {
+    Axios.post(`${proxyConfig.url}/api/reserva/web`, {
       ...data,
+      idModulo: this.props.idModulo,
       feEnvio: new Date()
     })
       .then(response => {
         let { data } = response
-
+        debugger
         if (!data.success) {
           this.setState({
             alert: data.mensaje,
             disabled: false
           })
         } else {
-          form.reset()
-          this.setState({
-            alert: this.props.successMessage,
-            disabled: false
-          })
+          // NAVEGO
+          console.log('Registro guardado!')
+          this.props.onReservaSuccess()
         }
       })
       .catch(err => {
@@ -151,39 +149,6 @@ class ContactoForm extends React.Component {
             />
             <span>Contacto</span>
           </label>
-          <label className="Form--Label has-arrow">
-            <select
-              className="Form--Input Form--Select"
-              name="tipo"
-              defaultValue="Tipo de consulta"
-              required
-            >
-              <option disabled hidden>
-                Tipo de consulta
-              </option>
-              <option>Necesito más información</option>
-              <option>Solo quería saludar</option>
-              <option>Encontré un problema o bug en la página</option>
-            </select>
-          </label>
-          <label className="Form--Label">
-            <textarea
-              className="Form--Input Form--Textarea Form--InputText"
-              placeholder="Mensaje"
-              name="mensaje"
-              rows="10"
-              required
-            />
-            <span>Mensaje</span>
-          </label>
-          <label className="Form--Label Form-Checkbox">
-            <input
-              className="Form--Input Form--Textarea Form--CheckboxInput"
-              name="mantenerContacto"
-              type="checkbox"
-            />
-            <span>Manténte en contacto</span>
-          </label>
           <div
             className="g-recaptcha"
             data-sitekey="6LcVAt0UAAAAAHVhfscQ-zz7qmHVAZ8KV_1LItII"
@@ -193,7 +158,7 @@ class ContactoForm extends React.Component {
           <input
             className="Button Form--SubmitButton"
             type="submit"
-            value="Enviar"
+            value="Reservar"
             disabled={this.state.disabled}
           />
         </form>
@@ -202,4 +167,4 @@ class ContactoForm extends React.Component {
   }
 }
 
-export default ContactoForm
+export default CheckoutForm

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import Axios from 'axios'
 
 import Layout from '../components/Layout'
@@ -9,19 +9,28 @@ import CursoInfo from '../components/Cursos/CursoInfo'
 import TemasAccordion from '../components/Cursos/TemasAccordion'
 import Image from '../components/Image'
 import { proxyConfig } from '../helpers/proxyConfig'
+import withLocation from '../components/WithLocation'
+import ModuloInfo from '../components/Modulo/ModuloInfo'
+import CheckoutForm from '../components/Checkout/CheckoutForm'
 
 // Export Template for use in CMS preview
-export const CheckoutPageTemplate = ({ title, discover, body }) => {
-  const [curso, setCurso] = useState({})
-  const [modulos, setModulos] = useState([])
+const PageTemplate = ({ title, discover, body, search }) => {
+  const [modulo, setModulo] = useState({})
 
   useEffect(() => {
-    // async function fetchCurso() {
-    //   let { data } = await Axios.get(`${proxyConfig.url}/api/curso/${idCurso}`)
-    //   let { curso } = data
-    //   setCurso(curso)
-    // }
-    // fetchCurso()
+    const { mod } = search
+
+    async function fetchModulo() {
+      try {
+        let { data } = await Axios.get(`${proxyConfig.url}/api/modulo/${mod}`)
+        let { modulo } = data
+
+        setModulo(modulo)
+      } catch (e) {
+        if (e.response && e.response.status) window.location = '/404'
+      }
+    }
+    fetchModulo()
   }, [])
 
   return (
@@ -29,93 +38,35 @@ export const CheckoutPageTemplate = ({ title, discover, body }) => {
       <section className="section">
         <div className="container">
           <div className="row">
-            <div className="col-lg-8 col-md-6 col-sm-12 taCenter">
-              {curso.videoUrl ? (
-                <iframe
-                  className="video"
-                  src={curso.videoUrl}
-                  frameborder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              ) : (
-                <Image background src={curso.urlFoto} alt={curso.curso} />
-              )}
-            </div>
             <div className="col-lg-4 col-md-6 col-sm-12">
-              <CursoInfo
-                curso={curso.curso}
-                precioDefault={curso.precio}
-                categorias={curso.categorias}
-                modulos={modulos}
-                onReserva={() => {
-                  const url = `https://wa.me/593986402584?text=Hola%20quiero%20inscribirme%20en%20el%20curso%20de%20${curso.curso}`
-                  window.open(url, '_blank')
-                }}
-              />
+              <ModuloInfo {...modulo} />
+            </div>
+            <div className="col-lg-8 col-md-6 col-sm-12">
+              <div
+                className="reserva-form-container"
+                style={{ display: 'flex' }}
+              >
+                <div style={{ margin: 'auto' }}>
+                  <h1>Reservar</h1>
+                  <p>Para reservar este curso déjanos los siguientes datos</p>
+                  <CheckoutForm
+                    idModulo={modulo.idModulo}
+                    name="Formulario de contacto"
+                    onReservaSuccess={() =>
+                      navigate(`purchase-success?type=web`)
+                    }
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section className="section thin">
-        <div className="container">
-          <h2>Acerca de este curso</h2>
-          <p>{curso.descripcion}</p>
-        </div>
-      </section>
-      <section className="section thin">
-        <div className="container">
-          <h2>Tecnologías a usar</h2>
-          <div className="row">
-            {curso.tecnologias &&
-              curso.tecnologias.map(tecnologia => (
-                <div className="col-lg-3 col-md-4 col-sm-6 d-flex">
-                  <img
-                    className="mr-3"
-                    src={tecnologia.image}
-                    width="32px"
-                    height="32px"
-                  />
-                  <p>{tecnologia.tecnologia}</p>
-                </div>
-              ))}
-          </div>
-        </div>
-      </section>
-      <section className="section thin">
-        <div className="container">
-          <h2>4 cosas que aprenderás durante el curso</h2>
-          <div className="row">
-            {curso.capacidades &&
-              curso.capacidades.map(capacidad => (
-                <div className="col-lg-3 col-md-4 col-sm-6 d-flex">
-                  <p>{capacidad.capacidad}</p>
-                </div>
-              ))}
-          </div>
-        </div>
-      </section>
-      <section className="section thin">
-        <div className="container">
-          <h2>¿Qué requieres para tomar este curso?</h2>
-          <p>{curso.requerimientos}</p>
-        </div>
-      </section>
-      <section className="section thin">
-        <div className="container">
-          <h2>¿Qué incluye este curso?</h2>
-          <p>{curso.incluye}</p>
-        </div>
-      </section>
-      <section className="section thin">
-        <div className="container">
-          <h2>Clases del curso</h2>
-          <TemasAccordion temas={curso.temas} />
         </div>
       </section>
     </main>
   )
 }
+
+export const CheckoutPageTemplate = withLocation(PageTemplate)
 
 // Export Default HomePage for front-end
 const CheckoutPage = ({ data: { page }, ...props }) => (

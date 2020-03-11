@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import Axios from 'axios'
 
 import Layout from '../components/Layout'
@@ -65,10 +65,9 @@ export const CursoDetallePageTemplate = ({
                 precioDefault={curso.precio}
                 categorias={curso.categorias}
                 modulos={modulos}
-                onReserva={() => {
-                  const url = `https://wa.me/593986402584?text=Hola%20quiero%20inscribirme%20en%20el%20curso%20de%20${curso.curso}`
-                  window.open(url, '_blank')
-                }}
+                onReserva={modulo =>
+                  navigate('checkout?mod=' + modulo.idModulo)
+                }
               />
             </div>
           </div>
