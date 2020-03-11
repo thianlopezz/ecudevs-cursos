@@ -1,5 +1,5 @@
 ---
-template: PurchaseSuccess
+template: PurchaseSuccessPage
 slug: purchase-success
 title: Purchase Success
 subtitle: Subtitle
