@@ -8,4 +8,4 @@ meta:
 ---
 # Gracias por registrarte en nuestro curso.
 
-Hemos recibido tu información, en breve un asesor se comunicará contigo para coordinar los últimos detalles de tu inscripción
+Hemos recibido tu información, en breve un asesor se comunicará contigo para coordinar los últimos detalles de tu inscripción.
