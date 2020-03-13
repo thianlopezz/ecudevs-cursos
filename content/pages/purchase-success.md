@@ -1,9 +1,11 @@
 ---
 template: PurchaseSuccessPage
 slug: purchase-success
-title: Purchase Success
-subtitle: Subtitle
-body: bodii
+title: ¡Felicidades!
+subtitle: ''
 meta:
-  title: Purchase Success
+  title: Registro exitoso
 ---
+# Gracias por registrarte en nuestro curso.
+
+Hemos recibido tu información, en breve un asesor se comunicará contigo para coordinar los últimos detalles de tu inscripción
