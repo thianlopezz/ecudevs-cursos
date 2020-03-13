@@ -7,9 +7,10 @@ import Layout from '../components/Layout'
 // import './CheckoutPage.css'
 import withLocation from '../components/withLocation'
 import Content from '../components/Content'
+import PageHeader from '../components/PageHeader'
 
 // Export Template for use in CMS preview
-const PageTemplate = ({ title, subtitle, body, search }) => {
+const PageTemplate = ({ title, subtitle, featuredImage, body, search }) => {
   useEffect(() => {
     const { type } = search
     console.log('Type', type)
@@ -17,9 +18,14 @@ const PageTemplate = ({ title, subtitle, body, search }) => {
 
   return (
     <main className="Checkout">
+      <PageHeader
+        title={title}
+        subtitle={subtitle}
+        backgroundImage={featuredImage}
+      />
       <section className="section">
-        <div className="container" style={{ height: '100vh' }}>
-          <div style={{ display: 'flex' }}>
+        <div className="container">
+          <div style={{ display: 'flex', height: '100vh' }}>
             <div style={{ margin: 'auto' }}>
               <h1>{title}</h1>
               <Content src={body} />
@@ -54,7 +60,6 @@ export const pageQuery = graphql`
       frontmatter {
         title
         subtitle
-        body
       }
     }
   }

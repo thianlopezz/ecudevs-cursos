@@ -401,6 +401,7 @@ collections: # A list of collections the CMS should be able to edit
               widget: markdown,
               required: false,
             }
+          - { label: FeaturedImage, name: featuredImage, widget: string }
           - { label: Body, name: body, widget: markdown }
           - label: 'Meta'
             required: false
