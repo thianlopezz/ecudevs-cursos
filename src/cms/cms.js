@@ -36,7 +36,7 @@ CMS.registerPreviewTemplate('curso-detalle-page', ({ entry }) => (
 CMS.registerPreviewTemplate('checkout-page', ({ entry }) => (
   <CheckoutPageTemplate {...entry.toJS().data} />
 ))
-CMS.registerPreviewTemplate('purchase-success', ({ entry }) => (
+CMS.registerPreviewTemplate('purchase-success-page', ({ entry }) => (
   <PurchaseSuccessTemplate {...entry.toJS().data} />
 ))
 CMS.registerPreviewTemplate('components-page', ({ entry }) => (

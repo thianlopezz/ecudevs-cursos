@@ -1,9 +1,7 @@
 ---
 template: CheckoutPage
-slug: checkout
-title: Checkout
+title: Checkout2
 subtitle: Subtitle2
 meta:
   title: Checkout
 ---
-
