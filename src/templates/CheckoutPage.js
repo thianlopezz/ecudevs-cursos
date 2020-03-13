@@ -9,7 +9,7 @@ import CursoInfo from '../components/Cursos/CursoInfo'
 import TemasAccordion from '../components/Cursos/TemasAccordion'
 import Image from '../components/Image'
 import { proxyConfig } from '../helpers/proxyConfig'
-import withLocation from '../components/WithLocation'
+import withLocation from '../components/withLocation'
 import ModuloInfo from '../components/Modulo/ModuloInfo'
 import CheckoutForm from '../components/Checkout/CheckoutForm'
 

@@ -5,7 +5,7 @@ import Axios from 'axios'
 import Layout from '../components/Layout'
 
 // import './CheckoutPage.css'
-import withLocation from '../components/WithLocation'
+import withLocation from '../components/withLocation'
 import Content from '../components/Content'
 
 // Export Template for use in CMS preview
