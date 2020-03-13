@@ -69,7 +69,7 @@ export default function CursoInfo({
         >
           {!fechaModulos || !fechaModulos.length > 0 ? (
             <>
-              <FeInicio feInicio="No hay fechas disponibles" />
+              <FeInicio mensaje="No hay fechas disponibles" />
               <p style={{ textAlign: 'justify' }} className="mt-1">
                 Pero no te preocupes, también puedes preguntar por este curso en
                 modalidad <strong>In Company</strong>.

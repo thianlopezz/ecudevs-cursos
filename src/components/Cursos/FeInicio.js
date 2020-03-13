@@ -3,10 +3,9 @@ import moment from 'moment'
 
 import './FeInicio.css'
 
-export default function FeInicio({ feInicio }) {
-  let mensaje = ''
+export default function FeInicio({ feInicio, mensaje }) {
   let fecha = moment(feInicio)
-  if (fecha.isValid()) {
+  if (!mensaje) {
     mensaje = fecha.utc().format('ddd DD MMM YYYY')
   } else {
     mensaje = feInicio
