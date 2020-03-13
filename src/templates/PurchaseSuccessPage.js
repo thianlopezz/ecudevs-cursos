@@ -25,7 +25,7 @@ const PageTemplate = ({ title, subtitle, featuredImage, body, search }) => {
       />
       <section className="section">
         <div className="container">
-          <div style={{ display: 'flex', height: '100vh' }}>
+          <div style={{ display: 'flex' }}>
             <div style={{ margin: 'auto' }}>
               <h1>{title}</h1>
               <Content src={body} />
@@ -60,6 +60,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         subtitle
+        featuredImage
       }
     }
   }
