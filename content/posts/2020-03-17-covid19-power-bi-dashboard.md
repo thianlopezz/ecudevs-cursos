@@ -1,7 +1,7 @@
 ---
 template: SinglePost
 title: COVID19 - Power BI Dashboard
-status: Published
+status: Draft
 date: 2020-03-18T04:38:50.894Z
 excerpt: >-
   Nuestro pequeño aporte a través de Power BI, frente a la difícil situación que
