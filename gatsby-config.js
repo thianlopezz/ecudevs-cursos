@@ -4,8 +4,8 @@ let facebook_pixel = '471226703665611'
 
 module.exports = {
   siteMetadata: {
-    title: 'Yelloecake',
-    siteUrl: 'https://yellowcake.netlify.com'
+    title: 'Ecudevs',
+    siteUrl: 'https://www.ecudevs.com/'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
