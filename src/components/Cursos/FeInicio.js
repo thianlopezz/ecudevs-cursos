@@ -7,8 +7,6 @@ export default function FeInicio({ feInicio, mensaje }) {
   let fecha = moment(feInicio)
   if (!mensaje) {
     mensaje = fecha.utc().format('ddd DD MMM YYYY')
-  } else {
-    mensaje = feInicio
   }
   return (
     <div className="feInicio">

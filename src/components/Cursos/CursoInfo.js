@@ -67,9 +67,9 @@ export default function CursoInfo({
           className="items-center justify-between w-full"
           style={{ marginBottom: '0.5em' }}
         >
-          {!fechaModulos || !fechaModulos.length > 0 ? (
+          {!fechaModulos || fechaModulos.length == 0 ? (
             <>
-              <FeInicio mensaje="No hay fechas disponibles" />
+              <FeInicio mensaje="No hay nuevas fechas disponibles" />
               <p style={{ textAlign: 'justify' }} className="mt-1">
                 Pero no te preocupes, también puedes preguntar por este curso en
                 modalidad <strong>In Company</strong>.
@@ -109,38 +109,36 @@ export default function CursoInfo({
                     )
                     .join(', ')}
                   {' - '}
-                  {moment(moduloSelected.fechas[0].horaInicio)
-                    .utc()
-                    .format('hh:mma') +
+                  {moment(moduloSelected.fechas[0].horaInicio).format(
+                    'hh:mma'
+                  ) +
                     ' a ' +
-                    moment(moduloSelected.fechas[0].horaFin)
-                      .utc()
-                      .format('hh:mma')}
+                    moment(moduloSelected.fechas[0].horaFin).format('hh:mma')}
                 </h3>
+              )}
+            </div>
+            <div className="flex flex-col mt-16">
+              <div className="flex items-center justify-between w-full">
+                <p className="">
+                  <span className="signo">US$</span>
+                  <span className="precio">{precioDefault}</span>
+                </p>
+              </div>
+              {promocion && (
+                <>
+                  <div className="flex items-center justify-between w-full">
+                    <span className="precioRegular">Precio Regular</span>
+                    <span className="precioRegular valorRegular">US$ 57</span>
+                  </div>
+                  <div className="flex items-center justify-between w-full">
+                    <span className="precioRegular">Ahorras</span>
+                    <span className="precioRegular">US$42.01 (73%)</span>
+                  </div>
+                </>
               )}
             </div>
           </>
         )}
-        <div className="flex flex-col mt-16">
-          <div className="flex items-center justify-between w-full">
-            <p className="">
-              <span className="signo">US$</span>
-              <span className="precio">{precioDefault}</span>
-            </p>
-          </div>
-          {promocion && (
-            <>
-              <div className="flex items-center justify-between w-full">
-                <span className="precioRegular">Precio Regular</span>
-                <span className="precioRegular valorRegular">US$ 57</span>
-              </div>
-              <div className="flex items-center justify-between w-full">
-                <span className="precioRegular">Ahorras</span>
-                <span className="precioRegular">US$42.01 (73%)</span>
-              </div>
-            </>
-          )}
-        </div>
       </div>
       {fechaModulos && fechaModulos.length > 0 && (
         <div className="botonera">

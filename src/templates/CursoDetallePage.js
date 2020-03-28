@@ -9,6 +9,7 @@ import CursoInfo from '../components/Cursos/CursoInfo'
 import TemasAccordion from '../components/Cursos/TemasAccordion'
 import Image from '../components/Image'
 import { proxyConfig } from '../helpers/proxyConfig'
+import moment from 'moment'
 
 // Export Template for use in CMS preview
 export const CursoDetallePageTemplate = ({
@@ -32,9 +33,15 @@ export const CursoDetallePageTemplate = ({
         `${proxyConfig.url}/api/modulo/curso/${idCurso}`
       )
 
-      let { modulos } = data
+      let { modulos = [] } = data
 
-      setModulos(modulos)
+      setModulos(
+        modulos.filter(modulo =>
+          moment(modulo.feInicio)
+            .utc()
+            .isSameOrAfter(moment(), 'date')
+        )
+      )
     }
 
     fetchCurso()
