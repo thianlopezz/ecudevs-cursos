@@ -34,7 +34,7 @@ export default function CursoInfo({
     existeFecha && setSelectedDate(moment(fecha))
   }
 
-  let fechaModulos = modulos.map(modulo => moment(modulo.feInicio))
+  let fechaModulos = modulos.map(modulo => moment(modulo.feInicio).utc())
 
   let moduloSelected = modulos.find(modulo => {
     return moment(modulo.feInicio).isSame(moment(selectedDate), 'date')

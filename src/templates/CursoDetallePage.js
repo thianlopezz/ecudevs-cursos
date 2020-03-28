@@ -34,12 +34,9 @@ export const CursoDetallePageTemplate = ({
       )
 
       let { modulos = [] } = data
-
       setModulos(
         modulos.filter(modulo =>
-          moment(modulo.feInicio)
-            .utc()
-            .isSameOrAfter(moment(), 'date')
+          moment(modulo.feInicio).isSameOrAfter(moment())
         )
       )
     }
