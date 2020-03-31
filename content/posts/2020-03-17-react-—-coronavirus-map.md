@@ -3,7 +3,7 @@ template: SinglePost
 title: React — Coronavirus Map
 status: Published
 date: 2020-03-18T04:46:39.683Z
-featuredImage: 'https://miro.medium.com/max/2400/1*KXeiEujcvmWlTuGXwEtgbw.png'
+featuredImage: 'https://miro.medium.com/max/1134/0*O2xLTnW7qVjpE0tG'
 excerpt: >-
   Tratando de hacer un aporte por parte de Ecudevs en este duro momento por el
   que pasa el mundo entero, y aprovechando que de seguro estás cumpliendo las
