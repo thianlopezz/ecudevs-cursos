@@ -4,7 +4,7 @@ title: >-
   ¿Cómo instalar Android Sdk y configurarlo para poder probar mis aplicaciones
   de Ionic Framework?
 status: Published
-date: 2020-09-28T05:00:00.000Z
+date: 2018-09-28T05:00:00.000Z
 featuredImage: 'https://miro.medium.com/max/1400/1*XN6rFtusBR9N3Iu55CK94Q.png'
 excerpt: >-
   Este tutorial va enfocado como un complemento al curso de Ionic Framework y
