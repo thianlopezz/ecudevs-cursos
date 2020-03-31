@@ -121,7 +121,9 @@ export default function CursoInfo({
               <div className="flex items-center justify-between w-full">
                 <p className="">
                   <span className="signo">US$</span>
-                  <span className="precio">{precioDefault}</span>
+                  <span className="precio">
+                    {(moduloSelected && moduloSelected.precio) || precioDefault}
+                  </span>
                 </p>
               </div>
               {promocion && (
