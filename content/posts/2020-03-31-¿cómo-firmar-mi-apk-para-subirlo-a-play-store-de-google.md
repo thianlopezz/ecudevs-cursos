@@ -12,6 +12,8 @@ excerpt: >-
   APK.
 categories:
   - category: Tutorial
+  - category: DevOps
+  - category: Ionic Framework
 ---
 Estamos listos, ya hemos pasado por lo más difícil, corregir bugs, realizar pruebas, cambios a última hora, pero al fin nuestra APP está lista, nuestro APK por fin compiló. Pero, ¡espera! aun hay un detalle más que debes resolver para que Google pueda enseñar al mundo lo que tienes para él… debes firmar tu APK.
 
