@@ -109,11 +109,14 @@ export default function CursoInfo({
                     )
                     .join(', ')}
                   {' - '}
-                  {moment(moduloSelected.fechas[0].horaInicio).format(
-                    'hh:mma'
-                  ) +
+                  {/* en prod funciona con utc() */}
+                  {moment(moduloSelected.fechas[0].horaInicio)
+                    .utc()
+                    .format('hh:mma') +
                     ' a ' +
-                    moment(moduloSelected.fechas[0].horaFin).format('hh:mma')}
+                    moment(moduloSelected.fechas[0].horaFin)
+                      .utc()
+                      .format('hh:mma')}
                 </h3>
               )}
             </div>
