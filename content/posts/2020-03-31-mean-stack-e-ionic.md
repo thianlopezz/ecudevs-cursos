@@ -2,7 +2,7 @@
 template: SinglePost
 title: MEAN Stack e Ionic
 status: Published
-date: 2018-09-09T19:21:43.775Z
+date: 2018-09-06T19:21:43.775Z
 featuredImage: 'https://miro.medium.com/max/1400/1*BkYOoWp4J6G_VOxTdwZZDw.jpeg'
 excerpt: >-
   JavaScript está en todas partes, si eres desarrollador web sabes muy bien de
