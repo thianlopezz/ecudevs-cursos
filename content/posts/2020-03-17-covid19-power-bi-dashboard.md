@@ -1,7 +1,7 @@
 ---
 template: SinglePost
 title: COVID19 - Power BI Dashboard
-status: Draft
+status: Published
 date: 2020-03-18T04:38:50.894Z
 featuredImage: 'https://miro.medium.com/max/1134/0*O2xLTnW7qVjpE0tG'
 excerpt: >-
