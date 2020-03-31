@@ -11,6 +11,8 @@ excerpt: >-
   tecnologías se basan JavaScript desde su frontend, backend y base de datos.
 categories:
   - category: Ionic Framework
+  - category: JavaScript
+  - category: MEAN Stack
 ---
 JavaScript está en todas partes, si eres desarrollador web sabes muy bien de lo que hablo. MEAN stack es un conjunto de tecnologías que sirven para el desarrollo de aplicaciones y páginas web dinámicas, todo este conjunto de tecnologías se basan JavaScript desde su frontend, backend y base de datos.
 
