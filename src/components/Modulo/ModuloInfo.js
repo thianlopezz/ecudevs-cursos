@@ -11,9 +11,8 @@ export default function ModuloInfo({
   feInicio,
   duracion,
   fechas,
-  precio,
-  isPromo,
-  onReserva
+  descuento,
+  precio
 }) {
   return (
     <div className="card">
@@ -69,20 +68,32 @@ export default function ModuloInfo({
 
         <div className="flex flex-col mt-16">
           <div className="flex items-center justify-between w-full">
-            <p className="">
+            <p
+              style={
+                descuento && descuento.activo == 1 ? { marginBottom: 0 } : {}
+              }
+            >
               <span className="signo">US$</span>
-              <span className="precio">{precio}</span>
+              <span className="precio">
+                {descuento && descuento.activo == 1
+                  ? descuento.precioDescuento
+                  : precio}
+              </span>
             </p>
           </div>
-          {isPromo && (
+          {descuento && descuento.activo == 1 && (
             <>
               <div className="flex items-center justify-between w-full">
                 <span className="precioRegular">Precio Regular</span>
-                <span className="precioRegular valorRegular">US$ 57</span>
+                <span className="precioRegular valorRegular">
+                  US$ {descuento.precioNormal}
+                </span>
               </div>
               <div className="flex items-center justify-between w-full">
                 <span className="precioRegular">Ahorras</span>
-                <span className="precioRegular">US$42.01 (73%)</span>
+                <span className="precioRegular">
+                  US$ {descuento.ahorro} ({descuento.porcentajeDescuento}%)
+                </span>
               </div>
             </>
           )}

@@ -6,14 +6,7 @@ import moment from 'moment'
 import AccordionItem from '../Accordion/AccordionItem'
 import FeInicio from './FeInicio'
 
-export default function CursoInfo({
-  curso,
-  precioDefault,
-  modulos,
-  promocion,
-  categorias,
-  onReserva
-}) {
+export default function CursoInfo({ curso, modulos, categorias, onReserva }) {
   const [selectedDate, setSelectedDate] = useState()
   // const [moduloSelected, setModuloSelected] = useState()
 
@@ -41,6 +34,8 @@ export default function CursoInfo({
   })
 
   moduloSelected = moduloSelected || {}
+
+  const { descuento } = moduloSelected
 
   return (
     <div className="card">
@@ -91,14 +86,23 @@ export default function CursoInfo({
         </div> */}
         {fechaModulos && fechaModulos.length > 0 && (
           <>
-            <div className="flex items-center justify-between w-full">
+            <div
+              style={{ zIndex: 2 }}
+              className="flex items-center justify-between w-full"
+            >
               <h3>Duración</h3>
               <h3 style={{ color: '#8d8d9d' }}>{moduloSelected.duracion}H</h3>
             </div>
-            <div className="flex items-center justify-between w-full">
+            <div
+              style={{ zIndex: 2 }}
+              className="flex items-center justify-between w-full"
+            >
               <h3 style={{ marginBottom: '0.01em' }}>Horario</h3>
             </div>
-            <div className="flex items-center justify-between w-full">
+            <div
+              style={{ zIndex: 2 }}
+              className="flex items-center justify-between w-full"
+            >
               {moduloSelected.fechas && (
                 <h3 style={{ color: '#8d8d9d' }}>
                   {moduloSelected.fechas
@@ -120,47 +124,56 @@ export default function CursoInfo({
                 </h3>
               )}
             </div>
-            <div className="flex flex-col mt-16">
+            <div style={{ zIndex: 2 }} className="flex flex-col mt-16">
               <div className="flex items-center justify-between w-full">
-                <p className="">
+                <p
+                  style={
+                    descuento && descuento.activo == 1
+                      ? { marginBottom: 0 }
+                      : {}
+                  }
+                >
                   <span className="signo">US$</span>
                   <span className="precio">
-                    {(moduloSelected && moduloSelected.precio) || precioDefault}
+                    {descuento && descuento.activo == 1
+                      ? descuento.precioDescuento
+                      : moduloSelected.precio}
                   </span>
                 </p>
               </div>
-              {promocion && (
+              {descuento && descuento.activo == 1 && (
                 <>
                   <div className="flex items-center justify-between w-full">
                     <span className="precioRegular">Precio Regular</span>
-                    <span className="precioRegular valorRegular">US$ 57</span>
+                    <span className="precioRegular valorRegular">
+                      US$ {descuento.precioNormal}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between w-full">
                     <span className="precioRegular">Ahorras</span>
-                    <span className="precioRegular">US$42.01 (73%)</span>
+                    <span className="precioRegular">
+                      US$ {descuento.ahorro} ({descuento.porcentajeDescuento}%)
+                    </span>
                   </div>
                 </>
               )}
             </div>
+            <button
+              style={{ zIndex: 2 }}
+              onClick={() => {
+                let index = fechaModulos.findIndex(d =>
+                  moment(selectedDate).isSame(d, 'day')
+                )
+                onReserva(modulos[index])
+              }}
+              className="Button w-full"
+              type="button"
+            >
+              Reservar
+            </button>
           </>
         )}
       </div>
-      {fechaModulos && fechaModulos.length > 0 && (
-        <div className="botonera">
-          <button
-            onClick={() => {
-              let index = fechaModulos.findIndex(d =>
-                moment(selectedDate).isSame(d, 'day')
-              )
-              onReserva(modulos[index])
-            }}
-            className="Button w-full"
-            type="button"
-          >
-            Reservar
-          </button>
-        </div>
-      )}
     </div>
   )
 }

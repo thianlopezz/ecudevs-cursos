@@ -60,7 +60,12 @@ export const CursoDetallePageTemplate = ({
                   allowfullscreen
                 ></iframe>
               ) : (
-                <Image background src={curso.urlFoto} alt={curso.curso} />
+                <Image
+                  className="video"
+                  background
+                  src={curso.urlFoto}
+                  alt={curso.curso}
+                />
               )}
             </div>
             <div className="col-lg-4 col-md-6 col-sm-12">

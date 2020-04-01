@@ -37,7 +37,7 @@ class CheckoutForm extends React.Component {
     })
       .then(response => {
         let { data } = response
-        debugger
+
         if (!data.success) {
           this.setState({
             alert: data.mensaje,
