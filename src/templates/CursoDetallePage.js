@@ -30,7 +30,7 @@ export const CursoDetallePageTemplate = ({
 
     async function fetchModulos() {
       let { data } = await Axios.get(
-        `${proxyConfig.url}//modulo/curso/${idCurso}`
+        `${proxyConfig.url}/modulo/curso/${idCurso}`
       )
 
       let { modulos = [] } = data
