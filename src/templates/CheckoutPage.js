@@ -22,7 +22,7 @@ const PageTemplate = ({ title, discover, body, search }) => {
 
     async function fetchModulo() {
       try {
-        let { data } = await Axios.get(`${proxyConfig.url}/api/modulo/${mod}`)
+        let { data } = await Axios.get(`${proxyConfig.url}/modulo/${mod}`)
         let { modulo } = data
 
         setModulo(modulo)

@@ -7,7 +7,7 @@ const Axios = require('axios')
 let urlCursosBase = 'http://localhost:3001'
 
 if (process.env.NODE_ENV === 'production') {
-  urlCursosBase = 'https://api.ecudevs.com'
+  urlCursosBase = 'https://api.ecudevs.xyz'
   console.log('We are on ' + process.env.NODE_ENV)
 } else {
   console.log('We are on ' + process.env.NODE_ENV)
@@ -17,7 +17,7 @@ exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
   let { data: dataCursos } = await Axios.get(
-    `${urlCursosBase}/api/cursos/planner/${35}`
+    `${urlCursosBase}/cursos/planner/${35}`
   )
 
   let { cursos } = dataCursos

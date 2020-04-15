@@ -23,14 +23,14 @@ export const CursoDetallePageTemplate = ({
 
   useEffect(() => {
     async function fetchCurso() {
-      let { data } = await Axios.get(`${proxyConfig.url}/api/curso/${idCurso}`)
+      let { data } = await Axios.get(`${proxyConfig.url}/curso/${idCurso}`)
       let { curso } = data
       setCurso(curso)
     }
 
     async function fetchModulos() {
       let { data } = await Axios.get(
-        `${proxyConfig.url}/api/modulo/curso/${idCurso}`
+        `${proxyConfig.url}//modulo/curso/${idCurso}`
       )
 
       let { modulos = [] } = data

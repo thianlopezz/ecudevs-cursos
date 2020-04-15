@@ -30,7 +30,7 @@ class CheckoutForm extends React.Component {
     const data = serialize(form)
     this.setState({ disabled: true })
 
-    Axios.post(`${proxyConfig.url}/api/reserva/web`, {
+    Axios.post(`${proxyConfig.url}/reserva/web`, {
       ...data,
       idModulo: this.props.idModulo,
       feEnvio: new Date()

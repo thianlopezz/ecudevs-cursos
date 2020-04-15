@@ -31,7 +31,7 @@ class ContactoForm extends React.Component {
     const data = serialize(form)
     this.setState({ disabled: true })
 
-    Axios.post(`${proxyConfig.url}/api/mensajeContacto`, {
+    Axios.post(`${proxyConfig.url}/mensajeContacto`, {
       ...data,
       feEnvio: new Date()
     })

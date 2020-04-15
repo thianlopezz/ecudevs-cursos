@@ -5,7 +5,7 @@ let facebook_pixel = '471226703665611'
 module.exports = {
   siteMetadata: {
     title: 'Ecudevs',
-    siteUrl: 'https://www.ecudevs.com/'
+    siteUrl: 'https://www.ecudevs.xyz/'
   },
   plugins: [
     'gatsby-plugin-react-helmet',

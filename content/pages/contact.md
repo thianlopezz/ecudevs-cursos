@@ -19,6 +19,7 @@ meta:
   description: Encuentra toda la información para contactarnos.
   title: Página de contacto
 ---
+
 # Formulario de contacto
 
 No nos pierdas de vista, mantente siempre en contacto con nosotros, nos va a encantar mucho saber de ti.
