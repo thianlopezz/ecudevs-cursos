@@ -12,6 +12,7 @@ import { CursosPageTemplate } from '../templates/CursosPage'
 import { CursoDetallePageTemplate } from '../templates/CursoDetallePage'
 import { CheckoutPageTemplate } from '../templates/CheckoutPage'
 import { PurchaseSuccessTemplate } from '../templates/PurchaseSuccessPage'
+import { YoMeQuedoEnCasaTemplate } from '../templates/YoMeQuedoEnCasaPage'
 
 if (
   window.location.hostname === 'localhost' &&
@@ -53,4 +54,7 @@ CMS.registerPreviewTemplate('blog-page', ({ entry }) => (
 ))
 CMS.registerPreviewTemplate('posts', ({ entry }) => (
   <SinglePostTemplate {...entry.toJS().data} />
+))
+CMS.registerPreviewTemplate('en-casa', ({ entry }) => (
+  <YoMeQuedoEnCasaTemplate {...entry.toJS().data} />
 ))
