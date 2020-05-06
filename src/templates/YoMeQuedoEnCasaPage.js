@@ -36,6 +36,7 @@ export const byCategory = (posts, title, contentType) => {
 
 // Export Template for use in CMS preview
 export const YoMeQuedoEnCasaTemplate = ({
+  body,
   title,
   subtitle,
   featuredImage,
@@ -64,7 +65,7 @@ export const YoMeQuedoEnCasaTemplate = ({
       return (
         <main className="Blog">
           <PageHeader
-            title={'TITULOS'}
+            title={title}
             subtitle={subtitle}
             backgroundImage={featuredImage}
           />
@@ -77,13 +78,9 @@ export const YoMeQuedoEnCasaTemplate = ({
             </section>
           )}
 
-          {!!posts.length && (
-            <section className="section">
-              <div className="container">
-                <PostSection posts={filteredPosts} />
-              </div>
-            </section>
-          )}
+          <section className="section">
+            <div className="container">{body}</div>
+          </section>
         </main>
       )
     }}
@@ -128,6 +125,7 @@ export const pageQuery = graphql`
         contentType
       }
       frontmatter {
+        body
         title
         excerpt
         template
