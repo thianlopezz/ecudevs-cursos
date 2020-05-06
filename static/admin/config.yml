@@ -428,6 +428,51 @@ collections: # A list of collections the CMS should be able to edit
                   required: false,
                 }
 
+      - file: 'content/pages/en-casa.md'
+        label: 'En casa'
+        name: 'en-casa'
+        fields:
+          - {
+              label: Template,
+              name: template,
+              widget: hidden,
+              default: YoMeQuedoEnCasaPage,
+            }
+          - { label: Slug, name: slug, widget: hidden, default: '' }
+          - { label: Title, name: title, widget: string }
+          - {
+              label: Subtitle,
+              name: subtitle,
+              widget: markdown,
+              required: false,
+            }
+          - { label: FeaturedImage, name: featuredImage, widget: string }
+          - { label: Body, name: body, widget: markdown }
+          - label: 'Meta'
+            required: false
+            name: 'meta'
+            widget: 'object'
+            fields:
+              - { label: Title, name: title, widget: string, required: false }
+              - {
+                  label: Description,
+                  name: description,
+                  widget: text,
+                  required: false,
+                }
+              - {
+                  label: Canonical Link,
+                  name: canonicalLink,
+                  widget: string,
+                  required: false,
+                }
+              - {
+                  label: Noindex,
+                  name: noindex,
+                  widget: boolean,
+                  required: false,
+                }
+
   - name: infoPages
     label: Info Page
     editor:
