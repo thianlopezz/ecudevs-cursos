@@ -7,6 +7,7 @@ import PageHeader from '../components/PageHeader'
 import PostSection from '../components/PostSection'
 import PostCategoriesNav from '../components/PostCategoriesNav'
 import Layout from '../components/Layout'
+import Content from '../components/Content'
 
 /**
  * Filter posts by date. Feature dates will be fitered
@@ -70,16 +71,10 @@ export const YoMeQuedoEnCasaTemplate = ({
             backgroundImage={featuredImage}
           />
 
-          {!!postCategories.length && (
-            <section className="section thin">
-              <div className="container">
-                <PostCategoriesNav enableSearch categories={postCategories} />
-              </div>
-            </section>
-          )}
-
           <section className="section">
-            <div className="container">{body}</div>
+            <div className="container">
+              <Content source={body} />
+            </div>
           </section>
         </main>
       )
@@ -95,6 +90,7 @@ const YoMeQuedoEnCasa = ({ data: { page, posts, postCategories } }) => (
   >
     <YoMeQuedoEnCasaTemplate
       {...page}
+      body={page.html}
       {...page.fields}
       {...page.frontmatter}
       posts={posts.edges.map(post => ({
@@ -121,11 +117,11 @@ export const pageQuery = graphql`
   query YoMeQuedoEnCasa($id: String!) {
     page: markdownRemark(id: { eq: $id }) {
       ...Meta
+      html
       fields {
         contentType
       }
       frontmatter {
-        body
         title
         excerpt
         template
