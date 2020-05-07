@@ -11,6 +11,7 @@ import Content from '../components/Content'
 import CursosSection from '../components/Cursos/CursosSection'
 import { proxyConfig } from '../helpers/proxyConfig'
 import Axios from 'axios'
+import Loading from '../components/common/Loading/Loading'
 
 /**
  * Filter posts by date. Feature dates will be fitered
@@ -101,7 +102,14 @@ export const YoMeQuedoEnCasaTemplate = ({
 
             <section className="section">
               <div className="container">
-                <CursosSection cursos={cursos} showLoadMore={false} />
+                <h1 className="taCenter">Cursos con descuento</h1>
+                {loading ? (
+                  <section className="section taCenter">
+                    <Loading />
+                  </section>
+                ) : (
+                  <CursosSection cursos={cursos} showLoadMore={false} />
+                )}
               </div>
             </section>
 
